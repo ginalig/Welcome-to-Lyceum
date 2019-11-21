@@ -34,6 +34,7 @@ Welcome to Lyceum!
 
 *Pokemon Red
 *Pokemon Blue
+*The Binding of Isaac
 
 **[ ИНСТРУМЕНТЫ РАЗРАБОТКИ ]**
 
