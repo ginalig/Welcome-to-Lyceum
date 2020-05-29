@@ -1,15 +1,12 @@
-﻿using UnityEngine;
-using System;
-using UnityEditor.IMGUI.Controls;
-using UnityEngine.Audio;
+﻿using System;
+using UnityEngine;
 
 namespace Resources.Scripts
 {
     public class AudioManager : MonoBehaviour
     {
-
         private static AudioManager instance;
-    
+
         public Sound[] sounds;
 
         private void Awake()
@@ -23,9 +20,9 @@ namespace Resources.Scripts
                 Destroy(gameObject);
                 return;
             }
-        
+
             DontDestroyOnLoad(gameObject);
-        
+
             foreach (var sound in sounds)
             {
                 sound.source = gameObject.AddComponent<AudioSource>();
@@ -43,8 +40,8 @@ namespace Resources.Scripts
                 Debug.Log("Звук с таким именем не найден!");
                 return;
             }
+
             s.source.Play();
         }
     }
 }
-
