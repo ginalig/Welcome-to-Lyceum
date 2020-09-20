@@ -32,6 +32,39 @@ TextureImporter:
   - first:
       213: -5966739191110509651
     second: kolobokTiles_7
+  - first:
+      213: -1890867515760253825
+    second: kolobokTiles_2
+  - first:
+      213: -370195550508712611
+    second: kolobokTiles_3
+  - first:
+      213: 6229495022205111346
+    second: kolobokTiles_4
+  - first:
+      213: -3953154095814488493
+    second: kolobokTiles_5
+  - first:
+      213: -6543029145658080452
+    second: kolobokTiles_6
+  - first:
+      213: -1617323604723887519
+    second: kolobokTiles_7
+  - first:
+      213: 8719294011060099579
+    second: kolobokTiles_8
+  - first:
+      213: 8332966715784799464
+    second: kolobokTiles_8
+  - first:
+      213: 1178565914464000703
+    second: kolobokTiles_9
+  - first:
+      213: -3898101233956734977
+    second: kolobokTiles_9
+  - first:
+      213: -5401835441377731915
+    second: kolobokTiles_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -209,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c140fc34b2545da40800000000000000
-      internalID: 5392292180969587740
+      spriteID: f74e8cd330a42c5e0800000000000000
+      internalID: -1890867515760253825
       vertices: []
       indices: 
       edges: []
@@ -230,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f77a8e4882f714570800000000000000
-      internalID: 8449174187929020287
+      spriteID: d5d7f72bb1dccdaf0800000000000000
+      internalID: -370195550508712611
       vertices: []
       indices: 
       edges: []
@@ -251,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 326da870139981340800000000000000
-      internalID: 4834782635841213987
+      spriteID: 23c8998a7bc937650800000000000000
+      internalID: 6229495022205111346
       vertices: []
       indices: 
       edges: []
@@ -261,7 +294,49 @@ TextureImporter:
       name: kolobokTiles_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 160
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ec8986b439329c0800000000000000
+      internalID: -3953154095814488493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kolobokTiles_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c33c50298ad7235a0800000000000000
+      internalID: -6543029145658080452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kolobokTiles_7
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 160
         width: 32
         height: 32
@@ -272,14 +347,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c8dcd7192bed0e60800000000000000
-      internalID: 7930253080595847360
+      spriteID: 162149d10cc1e89e0800000000000000
+      internalID: -1617323604723887519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kolobokTiles_6
+      name: kolobokTiles_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4a18bf315a4a370800000000000000
+      internalID: 8332966715784799464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kolobokTiles_9
       rect:
         serializedVersion: 2
         x: 64
@@ -293,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43b7b62757ae5a8e0800000000000000
-      internalID: -1682681095601292492
+      spriteID: ff73f7ba49927e9c0800000000000000
+      internalID: -3898101233956734977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kolobokTiles_7
+      name: kolobokTiles_10
       rect:
         serializedVersion: 2
         x: 96
@@ -314,8 +410,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dabd47e9152e13da0800000000000000
-      internalID: -5966739191110509651
+      spriteID: 5ba90954943d805b0800000000000000
+      internalID: -5401835441377731915
       vertices: []
       indices: 
       edges: []

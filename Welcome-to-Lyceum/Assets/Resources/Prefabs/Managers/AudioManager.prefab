@@ -43,14 +43,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ae7d07cda17c345ae610a1ba96f9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 8422c08587b8a28409c5bf65f6810bb5, type: 2}
   sounds:
   - clip: {fileID: 8300000, guid: 5eb1fc9296b4b6c4688178bdd8bceebd, type: 3}
     name: Walking
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
-    volume: 1
   - clip: {fileID: 8300000, guid: 7c894a325298c0e4c948627f92e2e947, type: 3}
     name: Interaction
+    volume: 1
     pitch: 1
     source: {fileID: 0}
-    volume: 1
+  - clip: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+    name: Jump
+    volume: 0.662
+    pitch: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
+    name: Attack1
+    volume: 0.244
+    pitch: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+    name: Attack2
+    volume: 0.24
+    pitch: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+    name: HitEnemy
+    volume: 0.22
+    pitch: 1
+    source: {fileID: 0}

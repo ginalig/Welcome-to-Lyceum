@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class MainMenu : MonoBehaviour
+{
+    [SerializeField] private GameObject continueButton = null;
+    [SerializeField] private SceneLoader sceneLoader = null;
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+        
+        if (PlayerPrefs.GetInt("isSaved", 0) == 1)
+        {
+            continueButton.SetActive(true);
+        }
+    }
+
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        foreach (var key in ES3.GetKeys())
+        {
+            ES3.DeleteKey(key);
+        }
+    }
+    
+    public void Continue()
+    {
+        sceneLoader.LoadScene(PlayerPrefs.GetString("CurrentLevelName"));
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+}

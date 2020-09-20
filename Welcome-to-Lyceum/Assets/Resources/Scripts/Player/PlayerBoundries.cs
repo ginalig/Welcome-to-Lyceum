@@ -2,8 +2,6 @@
 
 public class PlayerBoundries : MonoBehaviour
 {
-    [SerializeField] private Transform up = null;
-    [SerializeField] private Transform down = null;
     [SerializeField] private Transform left = null;
     [SerializeField] private Transform right = null;
     
@@ -13,7 +11,7 @@ public class PlayerBoundries : MonoBehaviour
     {
         pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, left.position.x, right.position.x);
-        pos.y = Mathf.Clamp(pos.y, down.position.y, up.position.y);
+        //pos.y = Mathf.Clamp(pos.y, down.position.y, up.position.y);
         transform.position = pos;
     }
 }

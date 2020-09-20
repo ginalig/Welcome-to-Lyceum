@@ -1,14 +1,18 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Resources.Scripts
 {
     public class AudioManager : MonoBehaviour
     {
-        private static AudioManager instance;
 
+        [SerializeField] private AudioMixerGroup _audioMixerGroup = null;
+        
+        public static AudioManager instance;
+        
         public Sound[] sounds;
-
+        
         private void Awake()
         {
             if (instance == null)
@@ -29,6 +33,7 @@ namespace Resources.Scripts
                 sound.source.clip = sound.clip;
                 sound.source.volume = sound.volume;
                 sound.source.pitch = sound.pitch;
+                sound.source.outputAudioMixerGroup = _audioMixerGroup;
             }
         }
 
