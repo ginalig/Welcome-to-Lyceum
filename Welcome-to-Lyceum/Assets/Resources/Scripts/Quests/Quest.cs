@@ -14,7 +14,7 @@ public class Quest
     public string sceneName;
     public bool isActive;
 
-    public UnityEvent OnQuestCompleted;
+    public GameEvent OnQuestCompleted;
 
     public Quest(string name, string description, string location, string sceneName, bool isActive)
     {

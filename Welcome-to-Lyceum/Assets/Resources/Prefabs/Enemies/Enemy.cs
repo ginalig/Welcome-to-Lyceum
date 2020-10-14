@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] private Shaking shaking = null;
-    private QuestManager questManager = null;
+    [SerializeField] private Quests quests;
+    
 
     public int maxHp;
     private int currentHp;
@@ -18,7 +19,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHp = maxHp;
-        questManager = QuestManager.instance;
     }
 
     private void Update()
@@ -45,14 +45,14 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        foreach (var quest in questManager.quests)
+        foreach (var quest in quests.quests)
         {
             if (quest.isActive)
             {
                 quest.questGoal.EnemyKilled();
                 if (quest.questGoal.IsReached())
                 {
-                    questManager.QuestCompleted(quest.name);
+                    quests.QuestCompleted(quest.name);
                 }
             }
         }

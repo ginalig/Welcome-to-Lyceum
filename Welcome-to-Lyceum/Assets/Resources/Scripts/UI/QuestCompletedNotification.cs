@@ -5,22 +5,14 @@ using UnityEngine;
 
 public class QuestCompletedNotification : MonoBehaviour
 {
-    [SerializeField] private Animator _animator = null;
-    
-    public void GetDestroyed()
+    private void Start()
     {
+        StartCoroutine(GetDestroyedAfterSeconds(3));
+    }
+
+    private IEnumerator GetDestroyedAfterSeconds(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(2);
         Destroy(gameObject);
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(GetDisabledAfterSeconds(3f));
-        _animator.SetTrigger("QuestCompleted");
-    }
-
-    private IEnumerator GetDisabledAfterSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        gameObject.SetActive(false);
     }
 }

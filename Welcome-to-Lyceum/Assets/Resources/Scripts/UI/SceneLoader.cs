@@ -12,8 +12,18 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private GameObject loadingScreen = null;
     [SerializeField] private Slider loadingBar = null;
 
+    public Quests questsRef;
+
     public static SceneLoader instance;
 
+    private InputMaster controls;
+    
+    private void Awake()
+    {
+        controls = new InputMaster();
+        controls.Player.Load.performed += _ => LoadFightQuest();
+    }
+    
     private void Start()
     {
         if (instance == null)
@@ -41,7 +51,26 @@ public class SceneLoader : MonoBehaviour
         while (!operation.isDone)
         {
             loadingBar.value = Mathf.Clamp01(operation.progress / .9f);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
+    }
+
+    public void LoadFightQuest()
+    {
+        if (questsRef.isAbleToLoad)
+        {
+            questsRef.isAbleToLoad = false;
+            LoadScene(questsRef.sceneToLoad);
+        }
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 }

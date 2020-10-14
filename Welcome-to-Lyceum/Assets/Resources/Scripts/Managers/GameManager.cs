@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public Quests questsRef = null;
 
     private void Awake()
     {
@@ -27,6 +28,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+    }
+
     public void EnableDisable(GameObject other)
     {
         other.SetActive(!other.activeSelf);
@@ -37,13 +42,11 @@ public class GameManager : MonoBehaviour
         var playerPosition = Player.Instance.transform.position;
         
         PlayerPrefs.SetString("CurrentLevelName", SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetFloat("PlayerPositionX", playerPosition.x);
-        PlayerPrefs.SetFloat("PlayerPositionY", playerPosition.y);
-        PlayerPrefs.SetFloat("PlayerPositionZ", playerPosition.z);
         
         PlayerPrefs.Save();
         
         ES3.Save("PlayerPosition", playerPosition);
+        ES3.Save("Quests", questsRef);
     }
 
 }

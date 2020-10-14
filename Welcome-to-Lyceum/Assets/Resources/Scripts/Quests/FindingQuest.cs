@@ -9,25 +9,18 @@ public class FindingQuest : MonoBehaviour
 {
     public string questName;
 
-    [SerializeField]
-    private UnityEvent OnObjectFound = null;
+    [SerializeField] private Quests questsRef = null;
+    [SerializeField] private UnityEvent OnObjectFound = null;
 
-    private QuestManager questManager;
-
-    private void Start()
-    { 
-        questManager = QuestManager.instance;
-    }
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            var quests = questManager.quests;
+            var quests = questsRef.quests;
             var currentQuest = quests.Find(t => t.name.Equals(questName));
             if (currentQuest.isActive)
             {
-                questManager.QuestCompleted(questName);
+                questsRef.QuestCompleted(questName);
                 OnObjectFound.Invoke();
             }
         }

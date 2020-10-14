@@ -8,18 +8,17 @@ using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
-
-    public bool isTutorial = false;
-    
-
     public Transform questWindowContent;
     public GameObject questTemplatePrefab;
     public GameObject questAccomplishmentNotification;
     public TMP_Text questNotificationText;
 
-    public List<Quest> quests;
-    public List<Quest> allQuests;
-    public List<Quest> tutorialQuests;
+    public Quests questsRef;
+    
+    private List<Quest> quests;
+    private List<Quest> allQuests;
+    private List<Quest> tutorialQuests;
+
     
     public static QuestManager instance;
 
@@ -33,18 +32,11 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        if (!isTutorial) // Если не тутор, то загрузить квесты
-        {
-            quests = ES3.Load("Quests", allQuests);
-        }
-        else
-        {
-            quests = tutorialQuests;
-        }
-        UpdateQuestMenu(quests);
+        quests = questsRef.quests;
+        UpdateQuestMenu();
     }
 
-    public void UpdateQuestMenu(List<Quest> quests)
+    public void UpdateQuestMenu()
     {
         for (int i = 0; i < questWindowContent.childCount; i++)
         {
@@ -76,11 +68,11 @@ public class QuestManager : MonoBehaviour
         currentQuest.isActive = false;
         questAccomplishmentNotification.SetActive(true);
         questNotificationText.text = $"Задание {questName} выполнено!";
-        currentQuest.OnQuestCompleted.Invoke();
+        currentQuest.OnQuestCompleted.Raise();
         int nextQuestIndex = quests.FindIndex(x => x.name.Equals(questName)) + 1;
         if (nextQuestIndex < quests.Count)
             quests[quests.FindIndex(x => x.name.Equals(questName)) + 1].isActive = true;
-        UpdateQuestMenu(quests);
+        UpdateQuestMenu();
         
         AudioManager.instance.Play("QuestCompleted");
     }

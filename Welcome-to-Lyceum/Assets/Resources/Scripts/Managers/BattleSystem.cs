@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public enum BattleState
 {
@@ -48,7 +49,9 @@ public class BattleSystem : MonoBehaviour
 
     [SerializeField] private TMP_Text dialogueText = null;
     [SerializeField, TextArea(0, 3)] private string startDialogueText = null;
-
+    [SerializeField, TextArea(0, 3)] private string winDialogueText = null;
+    [SerializeField, TextArea(0, 3)] private string loseDialogueText = null;
+    
     [SerializeField] private Slider playerHealthBar = null;
     [SerializeField] private Slider playerManaBar = null;
     
@@ -64,6 +67,7 @@ public class BattleSystem : MonoBehaviour
         
         playerName = PlayerPrefs.GetString("PlayerName", "Лицеист");
         startDialogueText = startDialogueText.Replace("{PlayerName}", playerName);
+        PlayerCurrentHealth = PlayerPrefs.GetInt("PlayerCurrentHealth", playerMaxHealth);
         
         battleState = BattleState.Start;
 
@@ -74,53 +78,212 @@ public class BattleSystem : MonoBehaviour
     {
         playerNameUI.text = playerName;
         dialogueText.text = startDialogueText;
+        playerHealthBar.value = PlayerCurrentHealth;
+
+        EnemyCurrentHealth = enemyMaxHealth;
         
         yield return new WaitForSeconds(2f);
         
         battleState = BattleState.PlayerTurn;
-        UpdateSkillsList();
-        PlayerTurn();
+        
+        yield return PlayerTurn();
     }
 
-    public void PlayerTurn()
+    public IEnumerator PlayerTurn()
     {
-        if (battleState != BattleState.PlayerTurn) return;
+        if (battleState != BattleState.PlayerTurn) yield break;
 
         dialogueText.text = "Выбери способность:";
+        
+        UpdateSkillsList();
+        
+        yield return new WaitForSeconds(2); 
     }
 
+    public IEnumerator EnemyTurn()
+    {
+        if (battleState != BattleState.EnemyTurn) yield break;
+
+        dialogueText.text = "Ход противника...";
+        
+        yield return new WaitForSeconds(1);
+
+        yield return Action(GetRandomSkill(enemySkills));
+    }
+    
+
+    private IEnumerator Action(Skill skill)
+    {
+        dialogueText.text = skill.description;
+
+        bool isNextPlayerTurn = false;
+        if (battleState == BattleState.PlayerTurn)
+        {
+            if (skill.skillType == SkillType.DealDamage)
+            {
+                EnemyTakeDamage(skill.amount);
+            }
+
+            if (skill.skillType == SkillType.Heal)
+            {
+                PlayerTakeHeal(skill.amount);
+            }
+
+            if (skill.skillType == SkillType.SkipTurn)
+            {
+                dialogueText.text += " Противник пропускает ход.";
+
+                isNextPlayerTurn = true;
+            }
+            else
+            {
+                isNextPlayerTurn = false;
+            }
+            
+            playerManaBar.value -= skill.manaCost;
+        }
+        
+        else if (battleState == BattleState.EnemyTurn)
+        {
+            if (skill.skillType == SkillType.DealDamage)
+            {
+                PlayerTakeDamage(skill.amount);
+            }
+
+            if (skill.skillType == SkillType.Heal)
+            {
+                EnemyTakeHeal(skill.amount);
+            }
+
+            if (skill.skillType == SkillType.SkipTurn)
+            {
+                dialogueText.text += " Ты пропускаешь ход.";
+
+                isNextPlayerTurn = false;
+            }
+            else
+            {
+                isNextPlayerTurn = true;
+            }
+        }
+        
+        skill.OnUsed();
+        
+        UpdateSkillCooldowns();
+        
+        ClearSkillsList();
+        
+        yield return new WaitForSeconds(3f);
+
+        playerManaBar.value += 5;
+
+        if (isNextPlayerTurn)
+        {
+            battleState = BattleState.PlayerTurn;
+            StartCoroutine(PlayerTurn());
+        }
+        else
+        {
+            battleState = BattleState.EnemyTurn;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+    
+    private bool PlayerTakeDamage(int amount)
+    {
+        dialogueText.text += $" Тебе нанесли {amount} урона!";
+        
+        PlayerCurrentHealth -= amount;
+        playerHealthBar.value = PlayerCurrentHealth;
+        
+        if (PlayerCurrentHealth <= 0)
+            return true;
+        else
+            return false;
+    }
+
+    private void PlayerTakeHeal(int amount)
+    {
+        dialogueText.text += $" Восстановлено {amount} здоровья!";
+        
+        PlayerCurrentHealth += amount;
+        playerHealthBar.value = PlayerCurrentHealth;
+
+    }
+
+    private bool EnemyTakeDamage(int amount)
+    {
+        dialogueText.text += $" Противнику нанесено {amount} урона!";
+        
+        EnemyCurrentHealth -= amount;
+        enemyHealthBar.value = EnemyCurrentHealth;
+
+        if (EnemyCurrentHealth <= 0)
+            return true;
+        else
+            return false;
+    }
+
+    private void EnemyTakeHeal(int amount)
+    {
+        dialogueText.text += $" Противник восстановил {amount} здоровья!";
+
+        EnemyCurrentHealth += amount;
+        enemyHealthBar.value = EnemyCurrentHealth;
+        
+    }
+
+    private void Win()
+    {
+        dialogueText.text = "Победа! " + winDialogueText;
+    }
+
+    private void Lose()
+    {
+        dialogueText.text = "Поражение! " + loseDialogueText;
+    }
+
+    private Skill GetRandomSkill(Skill[] skills)
+    {
+        return skills[Random.Range(0, skills.Length - 1)];
+    }
+    
     private void UpdateSkillsList()
     {
-        for (int i = 0; i < scrollContent.childCount; i++)
-        {
-            Destroy(scrollContent.GetChild(i).gameObject);
-        }
-
+        ClearSkillsList();
+        
         foreach (var skill in playerSkills)
         {
             if (!skill.isActive || playerManaBar.value < skill.manaCost) continue;
             
+            // Генерация кнопки способности 
             var skillTemplate = Instantiate(skillButton, scrollContent);
-            skillTemplate.transform.Find("SkillDescription").GetComponent<TMP_Text>().text = skill.description;
+            skillTemplate.transform.Find("SkillDescription").GetComponent<TMP_Text>().text = skill.name;
             skillTemplate.transform.Find("ManaCost").GetComponent<TMP_Text>().text = skill.manaCost.ToString();
             skillTemplate.GetComponent<Button>().onClick.AddListener(() => StartCoroutine(Action(skill)));
         }
     }
 
-    private IEnumerator Action(Skill skill)
+    private void ClearSkillsList() //Очистка списка способностей
     {
-        if (battleState == BattleState.PlayerTurn)
+        for (int i = 0; i < scrollContent.childCount; i++)
         {
-            dialogueText.text = skill.description;
-
-            if (skill.skillType == SkillType.DealDamage)
-            {
-                playerManaBar.value -= skill.manaCost;
-                
-            }
+            Destroy(scrollContent.GetChild(i).gameObject);
         }
-
-        yield return new WaitForSeconds(3f);
     }
 
+    private void UpdateSkillCooldowns() // Обновление кулдаунов всех способностей, происходит после каждого хода
+    {
+        foreach (var skill in playerSkills)
+        {
+            skill.currentCooldown++;
+            skill.CheckCooldown();
+        }
+
+        foreach (var skill in enemySkills)
+        {
+            skill.currentCooldown++;
+            skill.CheckCooldown();
+        }
+    }
 }

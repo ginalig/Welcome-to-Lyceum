@@ -262,7 +262,9 @@
               <e p="BattleSystem.cs" t="Include" />
               <e p="CustomizationManager.cs" t="Include" />
               <e p="DialogueManager.cs" t="Include" />
+              <e p="GameEventListener.cs" t="Include" />
               <e p="GameManager.cs" t="Include" />
+              <e p="GameSaveManager.cs" t="Include" />
               <e p="MainMenu.cs" t="Include" />
               <e p="SettingsMenu.cs" t="Include" />
               <e p="Sound.cs" t="Include" />
@@ -277,10 +279,18 @@
               <e p="PlayerOutfit.cs" t="Include" />
             </e>
             <e p="Quests" t="Include">
+              <e p="FightTransition.cs" t="Include" />
               <e p="FindingQuest.cs" t="Include" />
               <e p="Quest.cs" t="Include" />
               <e p="QuestGoal.cs" t="Include" />
               <e p="QuestManager.cs" t="Include" />
+            </e>
+            <e p="ScriptableObjects" t="Include">
+              <e p="EventSystem" t="Include">
+                <e p="GameEvent.cs" t="Include" />
+              </e>
+              <e p="Position.cs" t="Include" />
+              <e p="Quests.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
               <e p="Linegradient.cs" t="Include" />

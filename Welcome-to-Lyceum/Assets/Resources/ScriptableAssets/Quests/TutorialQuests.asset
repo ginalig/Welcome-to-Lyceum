@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321a42b9d8a322a42ae52ad4541908d3, type: 3}
+  m_Name: TutorialQuests
+  m_EditorClassIdentifier: 
+  notificationPrefab: {fileID: 7330391062279740082, guid: 28aa39bd1e3cea946b988ccace7785ec,
+    type: 3}
+  questCompleted: {fileID: 11400000, guid: b3d8cba7fc750924ba747eac14c7ead7, type: 2}
+  quests:
+  - questGoal:
+      goalType: 2
+      currentAmount: 0
+      requiredAmount: 1
+    name: "\u041D\u0430\u0439\u0434\u0438 \u0437\u0435\u043B\u0435\u043D\u043E\u0435
+      \u043E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435"
+    description: 
+    location: "\u0413\u0434\u0435-\u0442\u043E \u0440\u044F\u0434\u043E\u043C..."
+    sceneName: 
+    isActive: 1
+    OnQuestCompleted: {fileID: 11400000, guid: 92260dc384465ab4cbc9707040c9d6bf, type: 2}
+  - questGoal:
+      goalType: 0
+      currentAmount: 7
+      requiredAmount: 1
+    name: "\u041F\u043E\u0431\u0435\u0434\u0438 \u0441\u0442\u0440\u0435\u0441\u0441"
+    description: 
+    location: "\u041E\u043D \u0440\u044F\u0434\u043E\u043C..."
+    sceneName: 
+    isActive: 0
+    OnQuestCompleted: {fileID: 11400000, guid: 4e47fb52ebf9489448a93a4bd6ef0d35, type: 2}

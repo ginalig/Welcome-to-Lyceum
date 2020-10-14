@@ -12,17 +12,13 @@ public class StressEnemy : MonoBehaviour
 {
     private Player player;
     private Transform playerPosition;
-    private GameObject spit = null;
 
-    [SerializeField] private Transform spawnSpitPoint = null;
-    [SerializeField] private GameObject spitPrefab = null;
     [SerializeField] private Rigidbody2D rigidBody = null;
     [SerializeField] private Rigidbody2D playerRigidBody = null;
 
     [SerializeField] private float dangerDistance = 0f;
     [SerializeField] private float safeDistance = 0f;
-    [SerializeField] private float spitSpeed = 0f;
-
+    
     private bool isAbleToMove = true;
     
     private static readonly int Shoot1 = Animator.StringToHash("Shoot");

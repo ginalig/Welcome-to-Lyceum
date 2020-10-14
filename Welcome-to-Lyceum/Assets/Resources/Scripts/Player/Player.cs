@@ -28,7 +28,7 @@ namespace Resources.Scripts
         public LayerMask enemyLayers;
         public Slider stressBar;
         public GameObject stressedEffectImage;
-
+        
         public float jumpForce;
         public float speed;
         public float attackRange;
@@ -36,6 +36,7 @@ namespace Resources.Scripts
         public int attackDamage;
         private bool isAbleToAttack = true;
         private int isConfused = -1;
+        public Position playerPosition;
 
         private bool isInDamageArea = false;
 
@@ -84,6 +85,8 @@ namespace Resources.Scripts
             animator.SetBool("Jump", !groundDetection.IsGrounded);
             
             stressBar.value = stressLevel;
+
+            playerPosition.position = transform.position;
         }
 
         private void PlaySound(string soundName)

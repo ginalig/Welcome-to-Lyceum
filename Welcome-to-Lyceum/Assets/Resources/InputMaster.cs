@@ -73,6 +73,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Load"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba0a3bee-e25d-474e-a268-1a3dd3d8f461"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -196,6 +204,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""QuestMenuClose"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d527185-7a2e-4933-ace5-84d192a8e775"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Load"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,6 +247,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_QuestMenuOpen = m_Player.FindAction("QuestMenuOpen", throwIfNotFound: true);
         m_Player_QuestMenuClose = m_Player.FindAction("QuestMenuClose", throwIfNotFound: true);
+        m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +304,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_QuestMenuOpen;
     private readonly InputAction m_Player_QuestMenuClose;
+    private readonly InputAction m_Player_Load;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -295,6 +316,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @QuestMenuOpen => m_Wrapper.m_Player_QuestMenuOpen;
         public InputAction @QuestMenuClose => m_Wrapper.m_Player_QuestMenuClose;
+        public InputAction @Load => m_Wrapper.m_Player_Load;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -325,6 +347,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @QuestMenuClose.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuestMenuClose;
                 @QuestMenuClose.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuestMenuClose;
                 @QuestMenuClose.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuestMenuClose;
+                @Load.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
+                @Load.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
+                @Load.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -350,6 +375,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @QuestMenuClose.started += instance.OnQuestMenuClose;
                 @QuestMenuClose.performed += instance.OnQuestMenuClose;
                 @QuestMenuClose.canceled += instance.OnQuestMenuClose;
+                @Load.started += instance.OnLoad;
+                @Load.performed += instance.OnLoad;
+                @Load.canceled += instance.OnLoad;
             }
         }
     }
@@ -372,5 +400,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnQuestMenuOpen(InputAction.CallbackContext context);
         void OnQuestMenuClose(InputAction.CallbackContext context);
+        void OnLoad(InputAction.CallbackContext context);
     }
 }
