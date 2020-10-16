@@ -12,6 +12,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject notificationPrefab = null;
     [SerializeField] private GameObject useButton = null;
 
+    [SerializeField] private TMP_Text restChargesText = null;
+
     public Quests quests;
     public Position playerPosition;
     public bool isPaused;
@@ -22,6 +24,7 @@ public class PlayerUI : MonoBehaviour
     {
         useButton.SetActive(quests.isAbleToLoad);
         useButton.transform.position = playerPosition.position + new Vector2(2, 0);
+        restChargesText.text = $"Заряды отдыха: {quests.restCharges}";
     }
 
     

@@ -20,15 +20,15 @@ public class QuestManager : MonoBehaviour
     private List<Quest> tutorialQuests;
 
     
-    public static QuestManager instance;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
+    // public static QuestManager instance;
+    //
+    // private void Awake()
+    // {
+    //     if (instance == null)
+    //     {
+    //         instance = this;
+    //     }
+    // }
 
     private void Start()
     {

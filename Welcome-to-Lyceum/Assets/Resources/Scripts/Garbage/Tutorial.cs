@@ -6,9 +6,20 @@ using UnityEngine.Events;
 
 public class Tutorial : MonoBehaviour
 {
-    [Serializable]
-    public class DialogueEvent : UnityEvent {}
+    private InputMaster controls;
 
-    [SerializeField]
-    private DialogueEvent onDialogueTriggered = new DialogueEvent();
+    private void Awake()
+    {
+        controls = new InputMaster();
+    }
+
+    private void Start()
+    {
+        controls.Disable();
+    }
+
+    public void EnableControls()
+    {
+        controls.Enable();
+    }
 }

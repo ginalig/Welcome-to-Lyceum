@@ -37,7 +37,10 @@ namespace Resources.Scripts
         private bool isAbleToAttack = true;
         private int isConfused = -1;
         public Position playerPosition;
+        public Position playerStartPosition;
 
+        public bool isTutroial = false;
+        
         private bool isInDamageArea = false;
 
         public static Player Instance;
@@ -60,6 +63,7 @@ namespace Resources.Scripts
 
             var startPosition = ES3.Load("PlayerPosition", new Vector3(0, -0.5f));
             transform.SetPositionAndRotation(startPosition, quaternion.identity);
+            transform.position = playerStartPosition.position;
         }
 
         private void Update()
@@ -187,12 +191,18 @@ namespace Resources.Scripts
 
         private void OnEnable()
         {
-            controls.Enable();
+            SetControlsActive(!isTutroial);
         }
 
         private void OnDisable()
         {
-            controls.Disable();
+            SetControlsActive(false);
+        }
+
+        public void SetControlsActive(bool value)
+        {
+            if (value) controls.Enable();
+            else controls.Disable();
         }
 
         private void OnDrawGizmosSelected()

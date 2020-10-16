@@ -17,6 +17,8 @@ public class Quests : ScriptableObject
 
     public string lastCompletedQuestName;
 
+    public int restCharges;
+
     public void QuestCompleted(string questName)
     {
         var currentQuest = quests.Find(x => x.name.Equals(questName));
