@@ -10,8 +10,9 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] private Shaking shaking = null;
-    [SerializeField] private Quests quests;
-    
+    [SerializeField] private Quests quests = null;
+
+    public AudioSystem audioSystem;
 
     public int maxHp;
     private int currentHp;
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour
         
         Debug.Log(currentHp);
         
-        AudioManager.instance.Play("HitEnemy");
+        audioSystem.Play("HitEnemy");
     }
 
     private void Die()

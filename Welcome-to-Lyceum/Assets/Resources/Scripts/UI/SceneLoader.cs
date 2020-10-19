@@ -12,6 +12,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private GameObject loadingScreen = null;
     [SerializeField] private Slider loadingBar = null;
 
+    public GameEvent onGameSaved;
     public Quests questsRef;
 
     public static SceneLoader instance;
@@ -57,12 +58,22 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadFightQuest()
     {
+        onGameSaved.Raise();
+        
         if (questsRef.isAbleToLoad)
         {
             questsRef.isAbleToLoad = false;
             LoadScene(questsRef.sceneToLoad);
         }
     }
+    
+    
+    public void LoadBack()
+    {
+        var prevLevel = ES3.Load<string>("CurrentLevelName");
+        StartCoroutine(LoadAsync(prevLevel));
+    }
+    
 
     private void OnEnable()
     {

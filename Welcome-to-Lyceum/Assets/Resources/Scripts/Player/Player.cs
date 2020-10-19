@@ -16,7 +16,7 @@ namespace Resources.Scripts
 
         public Animator animator = null;
 
-        private AudioManager audioManager = null;
+        public AudioSystem audioSystem;
         private Vector2 direction = Vector2.zero;
         private GameManager gameManager = null;
 
@@ -28,6 +28,8 @@ namespace Resources.Scripts
         public LayerMask enemyLayers;
         public Slider stressBar;
         public GameObject stressedEffectImage;
+
+        public ParticleSystem hitEffect;
         
         public float jumpForce;
         public float speed;
@@ -59,9 +61,8 @@ namespace Resources.Scripts
         private void Start()
         {
             gameManager = GameManager.instance;
-            audioManager = AudioManager.instance;
 
-            var startPosition = ES3.Load("PlayerPosition", new Vector3(0, -0.5f));
+            var startPosition = playerStartPosition.position;
             transform.SetPositionAndRotation(startPosition, quaternion.identity);
             transform.position = playerStartPosition.position;
         }
@@ -95,15 +96,15 @@ namespace Resources.Scripts
 
         private void PlaySound(string soundName)
         {
-            if (audioManager != null)
-                audioManager.Play(soundName);
+            if (audioSystem != null)
+                audioSystem.Play(soundName);
         }
 
         public void Jump()
         {
             if (!groundDetection.IsGrounded) return;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            audioManager.Play("Jump");
+            audioSystem.Play("Jump");
         }
 
 
@@ -118,10 +119,11 @@ namespace Resources.Scripts
             {
                 var temp = enemy.gameObject.GetComponent<Enemy>();
                 temp.TakeDamage(attackDamage);
+                hitEffect.Play();
             }
             
-            if (Random.value >= 0.5) audioManager.Play("Attack1");
-            else audioManager.Play("Attack2");
+            if (Random.value >= 0.5) audioSystem.Play("Attack1");
+            else audioSystem.Play("Attack2");
             
              
             isAbleToAttack = false;

@@ -14,6 +14,7 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField] private TMP_Text restChargesText = null;
 
+    public AudioSystem audioSystem;
     public Quests quests;
     public Position playerPosition;
     public bool isPaused;
@@ -55,5 +56,6 @@ public class PlayerUI : MonoBehaviour
     {
         var go = Instantiate(notificationPrefab, gameObject.transform);
         go.GetComponentInChildren<TMP_Text>().text = $"Задание \"{quests.lastCompletedQuestName} \" выполнено!";
+        audioSystem.Play("QuestCompleted");
     }
 }

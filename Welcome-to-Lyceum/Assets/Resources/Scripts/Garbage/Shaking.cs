@@ -36,6 +36,7 @@ public class Shaking : MonoBehaviour
  
     private IEnumerator Shake()
     {
+        _startPos = transform.position;
         _timer = 0f;
  
         while (_timer < _time)

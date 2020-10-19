@@ -10,7 +10,6 @@ public class FindingQuest : MonoBehaviour
     public string questName;
 
     [SerializeField] private Quests questsRef = null;
-    [SerializeField] private UnityEvent OnObjectFound = null;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,7 +20,6 @@ public class FindingQuest : MonoBehaviour
             if (currentQuest.isActive)
             {
                 questsRef.QuestCompleted(questName);
-                OnObjectFound.Invoke();
             }
         }
     }

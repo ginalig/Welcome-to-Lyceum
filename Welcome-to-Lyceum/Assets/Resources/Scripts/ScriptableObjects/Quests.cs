@@ -6,9 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Content/Quests")]
 public class Quests : ScriptableObject
 {
-    public GameObject notificationPrefab = null;
-
-    public GameEvent questCompleted;
     public List<Quest> quests;
 
     public bool isAbleToLoad = false;
@@ -29,9 +26,8 @@ public class Quests : ScriptableObject
             quests[quests.FindIndex(x => x.name.Equals(questName)) + 1].isActive = true;
 
         lastCompletedQuestName = questName;
-        
-        questCompleted.Raise();
-        currentQuest.OnQuestCompleted.Raise();
+
+        if (currentQuest.OnQuestCompleted!= null) currentQuest.OnQuestCompleted.Raise();
        
     }
 
@@ -51,5 +47,15 @@ public class Quests : ScriptableObject
     {
         var quest = quests.Find(x => x.name.Equals(questName));
         quest.isActive = false;
+    }
+
+    public void AddRestCharges(int value)
+    {
+        restCharges += value;
+    }
+    
+    public void SaveQuests()
+    {
+        ES3.Save("Quests", this);
     }
 }

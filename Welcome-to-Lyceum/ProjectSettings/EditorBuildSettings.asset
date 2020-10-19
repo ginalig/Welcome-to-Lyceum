@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SettingsMenu.unity
     guid: d7b32ad5a1ad704448ac21a1f042fee6
   - enabled: 0
-    path: Assets/Scenes/Level2.unity
+    path: 
     guid: e6c622924924bee4cb54e0aa274770b2
   - enabled: 1
     path: Assets/Scenes/Guide.unity
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightScene1.unity
     guid: fcfbefb9dee3c8d4292075f7655ff5c3
+  - enabled: 1
+    path: Assets/Scenes/Cofix.unity
+    guid: 83406393efd96a043a6879b2931cb4d7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c477c3224cbd8844b9b0f8135ad0d1d5,
       type: 2}

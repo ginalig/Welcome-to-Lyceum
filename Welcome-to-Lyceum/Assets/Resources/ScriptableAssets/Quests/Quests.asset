@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321a42b9d8a322a42ae52ad4541908d3, type: 3}
   m_Name: Quests
   m_EditorClassIdentifier: 
-  notificationPrefab: {fileID: 7330391062279740082, guid: 28aa39bd1e3cea946b988ccace7785ec,
-    type: 3}
-  questCompleted: {fileID: 0}
   quests:
   - questGoal:
       goalType: 1
@@ -25,7 +22,7 @@ MonoBehaviour:
     description: 
     location: 204
     sceneName: 
-    isActive: 1
+    isActive: 0
     OnQuestCompleted: {fileID: 0}
   - questGoal:
       goalType: 1
@@ -39,4 +36,6 @@ MonoBehaviour:
     OnQuestCompleted: {fileID: 0}
   isAbleToLoad: 0
   sceneToLoad: FightScene1
-  lastCompletedQuestName: 
+  lastCompletedQuestName: "\u0420\u0430\u0437\u0431\u0435\u0440\u0438\u0441\u044C
+    \u0441 \u0431\u0435\u0441\u044F\u0447\u0438\u043C \u0447\u0435\u043B\u043E\u043C"
+  restCharges: 7

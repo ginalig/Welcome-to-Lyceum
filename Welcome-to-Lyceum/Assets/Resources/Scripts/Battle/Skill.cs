@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum SkillType
 {
@@ -22,6 +23,7 @@ public class Skill
     public int cooldown;
     public int currentCooldown;
     public bool isActive = true;
+    public UnityEvent OnUsedEvent;
 
     public void CheckCooldown()
     {
@@ -35,5 +37,6 @@ public class Skill
     {
         isActive = false;
         currentCooldown = -1;
+        OnUsedEvent.Invoke();
     }
 }

@@ -10,25 +10,12 @@ public class QuestManager : MonoBehaviour
 {
     public Transform questWindowContent;
     public GameObject questTemplatePrefab;
-    public GameObject questAccomplishmentNotification;
-    public TMP_Text questNotificationText;
-
     public Quests questsRef;
     
     private List<Quest> quests;
     private List<Quest> allQuests;
     private List<Quest> tutorialQuests;
 
-    
-    // public static QuestManager instance;
-    //
-    // private void Awake()
-    // {
-    //     if (instance == null)
-    //     {
-    //         instance = this;
-    //     }
-    // }
 
     private void Start()
     {
@@ -60,20 +47,5 @@ public class QuestManager : MonoBehaviour
         {
             questObject.SetActive(false);
         }
-    }
-
-    public void QuestCompleted(string questName)
-    {
-        var currentQuest = quests.Find(x => x.name.Equals(questName));
-        currentQuest.isActive = false;
-        questAccomplishmentNotification.SetActive(true);
-        questNotificationText.text = $"Задание {questName} выполнено!";
-        currentQuest.OnQuestCompleted.Raise();
-        int nextQuestIndex = quests.FindIndex(x => x.name.Equals(questName)) + 1;
-        if (nextQuestIndex < quests.Count)
-            quests[quests.FindIndex(x => x.name.Equals(questName)) + 1].isActive = true;
-        UpdateQuestMenu();
-        
-        AudioManager.instance.Play("QuestCompleted");
     }
 }

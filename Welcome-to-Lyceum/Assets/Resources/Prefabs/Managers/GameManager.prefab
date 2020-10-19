@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a13d4b8b138b04888ff24de27bf0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questsRef: {fileID: 0}
+  playerPosition: {fileID: 11400000, guid: 511b25986bfc77c4b80d65c7d3c910f0, type: 2}

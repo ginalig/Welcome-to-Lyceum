@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text text;
     public Image NPCIcon;
 
+    public AudioSystem audioSystem;
+
     private Dialogue currentDialogue;
     
     public static DialogueManager instance;
@@ -74,7 +76,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
-        AudioManager.instance.Play("Typing");
+        audioSystem.Play("Typing");
         sentence = sentence.Replace("{PlayerName}", PlayerPrefs.GetString("PlayerName", "Лицеист"));
         
         text.text = "";

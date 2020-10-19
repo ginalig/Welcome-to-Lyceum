@@ -31,7 +31,8 @@ public class MainMenu : MonoBehaviour
     
     public void Continue()
     {
-        sceneLoader.LoadScene(PlayerPrefs.GetString("CurrentLevelName"));
+        string sceneName = ES3.Load<string>("CurrentLevelName");
+        sceneLoader.LoadScene(sceneName);
     }
 
     public void Exit()

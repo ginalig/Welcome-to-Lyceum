@@ -9,7 +9,10 @@ public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown resolutionDropdown = null;
     [SerializeField] private AudioMixer masterMixer = null;
+    [SerializeField] private AudioMixer musicMixer = null;
     [SerializeField] private Toggle fullscreenToggle = null;
+    [SerializeField] private Slider volumeSlider = null;
+    [SerializeField] private Slider musicSlider = null;
 
     private void Awake()
     {
@@ -38,6 +41,11 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);    // Добавление списка опций в выпадающий список
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        masterMixer.GetFloat("volume", out var volume);
+        volumeSlider.value = volume;
+        masterMixer.GetFloat("volume", out volume);
+        musicSlider.value = volume;
     }
 
     public void SetResolution(int resolutionIndex)
@@ -55,4 +63,10 @@ public class SettingsMenu : MonoBehaviour
     {
         masterMixer.SetFloat("volume", value);
     }
+
+    public void SetMusicVolume(float value)
+    {
+        musicMixer.SetFloat("volume", value);
+    }
+    
 }

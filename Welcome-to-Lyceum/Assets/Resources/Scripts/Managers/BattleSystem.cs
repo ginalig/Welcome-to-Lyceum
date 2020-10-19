@@ -61,6 +61,14 @@ public class BattleSystem : MonoBehaviour
 
     [SerializeField] private Transform scrollContent = null;
 
+    [SerializeField] private SceneLoader sceneLoader = null;
+
+    [Header("QuestData")] 
+    
+    [SerializeField] private Quests quests = null;
+    [SerializeField] private string questName = null;
+    [SerializeField] private int restCharges = 0;
+
 
     private void Start()
     {
@@ -121,7 +129,8 @@ public class BattleSystem : MonoBehaviour
         {
             if (skill.skillType == SkillType.DealDamage)
             {
-                EnemyTakeDamage(skill.amount);
+                if (EnemyTakeDamage(skill.amount))
+                    StartCoroutine(Win());
             }
 
             if (skill.skillType == SkillType.Heal)
@@ -147,12 +156,19 @@ public class BattleSystem : MonoBehaviour
         {
             if (skill.skillType == SkillType.DealDamage)
             {
-                PlayerTakeDamage(skill.amount);
+                if(PlayerTakeDamage(skill.amount))
+                    StartCoroutine(Lose());
             }
 
             if (skill.skillType == SkillType.Heal)
             {
                 EnemyTakeHeal(skill.amount);
+            }
+
+            if (skill.skillType == SkillType.SelfDamage)
+            {
+                if (EnemyTakeDamage(skill.amount))
+                    StartCoroutine(Win());
             }
 
             if (skill.skillType == SkillType.SkipTurn)
@@ -191,9 +207,11 @@ public class BattleSystem : MonoBehaviour
     
     private bool PlayerTakeDamage(int amount)
     {
-        dialogueText.text += $" Тебе нанесли {amount} урона!";
-        
-        PlayerCurrentHealth -= amount;
+        int damage = amount + Random.Range(-3, 3);
+
+        dialogueText.text += $" Тебе нанесли {damage} урона!";
+
+        PlayerCurrentHealth -= damage;
         playerHealthBar.value = PlayerCurrentHealth;
         
         if (PlayerCurrentHealth <= 0)
@@ -213,9 +231,12 @@ public class BattleSystem : MonoBehaviour
 
     private bool EnemyTakeDamage(int amount)
     {
-        dialogueText.text += $" Противнику нанесено {amount} урона!";
         
-        EnemyCurrentHealth -= amount;
+        int damage = amount + Random.Range(-3, 3);
+
+        dialogueText.text += $" Противнику нанесено {damage} урона!";
+        
+        EnemyCurrentHealth -= damage;
         enemyHealthBar.value = EnemyCurrentHealth;
 
         if (EnemyCurrentHealth <= 0)
@@ -233,19 +254,31 @@ public class BattleSystem : MonoBehaviour
         
     }
 
-    private void Win()
+    private IEnumerator Win()
     {
         dialogueText.text = "Победа! " + winDialogueText;
+        quests.QuestCompleted(questName);
+        quests.restCharges += restCharges;
+        yield return new WaitForSeconds(2);
+        sceneLoader.LoadScene(ES3.Load<string>("CurrentLevelName"));
     }
 
-    private void Lose()
+    private IEnumerator Lose()
     {
         dialogueText.text = "Поражение! " + loseDialogueText;
+        
+        yield return new WaitForSeconds(2);
+        sceneLoader.LoadScene(ES3.Load<string>("CurrentLevelName"));
     }
 
     private Skill GetRandomSkill(Skill[] skills)
     {
-        return skills[Random.Range(0, skills.Length - 1)];
+        while (true)
+        {
+            var temp = skills[Random.Range(0, skills.Length - 1)];
+            if (temp.isActive)
+                return temp;
+        }
     }
     
     private void UpdateSkillsList()

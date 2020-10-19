@@ -246,6 +246,9 @@
               <e p="Skill.cs" t="Include" />
               <e p="Unit.cs" t="Include" />
             </e>
+            <e p="Cofix" t="Include">
+              <e p="CofixButton.cs" t="Include" />
+            </e>
             <e p="Data" t="Include">
               <e p="Dialogue.cs" t="Include" />
               <e p="PlayerOutfitData.cs" t="Include" />
@@ -254,12 +257,15 @@
               <e p="StressEnemy.cs" t="Include" />
             </e>
             <e p="Garbage" t="Include">
+              <e p="BackgroundMusic.cs" t="Include" />
+              <e p="DontDestroyOnLoad.cs" t="Include" />
               <e p="Shaking.cs" t="Include" />
               <e p="Tutorial.cs" t="Include" />
             </e>
             <e p="Managers" t="Include">
               <e p="AudioManager.cs" t="Include" />
               <e p="BattleSystem.cs" t="Include" />
+              <e p="Cofix.cs" t="Include" />
               <e p="CustomizationManager.cs" t="Include" />
               <e p="DialogueManager.cs" t="Include" />
               <e p="GameEventListener.cs" t="Include" />
@@ -277,6 +283,7 @@
               <e p="Player.cs" t="Include" />
               <e p="PlayerBoundries.cs" t="Include" />
               <e p="PlayerOutfit.cs" t="Include" />
+              <e p="StressedEffect.cs" t="Include" />
             </e>
             <e p="Quests" t="Include">
               <e p="FightTransition.cs" t="Include" />
@@ -286,6 +293,7 @@
               <e p="QuestManager.cs" t="Include" />
             </e>
             <e p="ScriptableObjects" t="Include">
+              <e p="AudioSystem.cs" t="Include" />
               <e p="EventSystem" t="Include">
                 <e p="GameEvent.cs" t="Include" />
               </e>
