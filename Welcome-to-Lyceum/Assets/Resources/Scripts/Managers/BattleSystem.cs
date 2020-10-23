@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+
+
 public enum BattleState
 {
     Start,
@@ -69,6 +71,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private string questName = null;
     [SerializeField] private int restCharges = 0;
 
+    [Header("Prefabs To Animate")] 
+    
+    public List<GameObject> prefabs;
+
 
     private void Start()
     {
@@ -122,15 +128,19 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator Action(Skill skill)
     {
-        dialogueText.text = skill.description;
+        dialogueText.text = skill.description.Replace("{rand}", Random.Range(-100, 100).ToString());
 
         bool isNextPlayerTurn = false;
+        bool isWin = false;
+        bool isLose = false;
+        
         if (battleState == BattleState.PlayerTurn)
         {
             if (skill.skillType == SkillType.DealDamage)
             {
-                if (EnemyTakeDamage(skill.amount))
-                    StartCoroutine(Win());
+                isWin = EnemyTakeDamage(skill.amount, skill.isRandomized);
+                // if (EnemyTakeDamage(skill.amount, skill.isRandomized))
+                //     StartCoroutine(Win());
             }
 
             if (skill.skillType == SkillType.Heal)
@@ -156,8 +166,8 @@ public class BattleSystem : MonoBehaviour
         {
             if (skill.skillType == SkillType.DealDamage)
             {
-                if(PlayerTakeDamage(skill.amount))
-                    StartCoroutine(Lose());
+                isLose = PlayerTakeDamage(skill.amount, skill.isRandomized);
+                    //StartCoroutine(Lose());
             }
 
             if (skill.skillType == SkillType.Heal)
@@ -167,8 +177,9 @@ public class BattleSystem : MonoBehaviour
 
             if (skill.skillType == SkillType.SelfDamage)
             {
-                if (EnemyTakeDamage(skill.amount))
-                    StartCoroutine(Win());
+                isWin = EnemyTakeDamage(skill.amount, skill.isRandomized);
+                // if (EnemyTakeDamage(skill.amount, skill.isRandomized))
+                //     StartCoroutine(Win());
             }
 
             if (skill.skillType == SkillType.SkipTurn)
@@ -191,6 +202,15 @@ public class BattleSystem : MonoBehaviour
         
         yield return new WaitForSeconds(3f);
 
+        if (isWin)
+        {
+            yield return Win();
+        }
+        if (isLose)
+        {
+            yield return Lose();
+        }
+
         playerManaBar.value += 5;
 
         if (isNextPlayerTurn)
@@ -205,10 +225,12 @@ public class BattleSystem : MonoBehaviour
         }
     }
     
-    private bool PlayerTakeDamage(int amount)
+    private bool PlayerTakeDamage(int amount, bool isRandomized)
     {
-        int damage = amount + Random.Range(-3, 3);
-
+        int damage = amount;
+        if (isRandomized)
+            damage += Random.Range(-3, 3);
+        
         dialogueText.text += $" Тебе нанесли {damage} урона!";
 
         PlayerCurrentHealth -= damage;
@@ -229,10 +251,11 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    private bool EnemyTakeDamage(int amount)
+    private bool EnemyTakeDamage(int amount, bool isRandomized)
     {
-        
-        int damage = amount + Random.Range(-3, 3);
+        int damage = amount;
+        if (isRandomized)
+            damage += Random.Range(-3, 3);
 
         dialogueText.text += $" Противнику нанесено {damage} урона!";
         
@@ -279,6 +302,12 @@ public class BattleSystem : MonoBehaviour
             if (temp.isActive)
                 return temp;
         }
+    }
+
+    public void SpawnItem(string itemName)
+    {
+        var item = prefabs.Find(x => x.name.Equals(itemName));
+        Instantiate(item);
     }
     
     private void UpdateSkillsList()

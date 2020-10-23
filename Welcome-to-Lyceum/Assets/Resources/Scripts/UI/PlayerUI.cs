@@ -24,7 +24,6 @@ public class PlayerUI : MonoBehaviour
     private void Update()
     {
         useButton.SetActive(quests.isAbleToLoad);
-        useButton.transform.position = playerPosition.position + new Vector2(2, 0);
         restChargesText.text = $"Заряды отдыха: {quests.restCharges}";
     }
 

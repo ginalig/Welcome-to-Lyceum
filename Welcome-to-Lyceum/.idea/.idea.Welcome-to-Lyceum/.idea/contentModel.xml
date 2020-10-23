@@ -243,6 +243,7 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="Battle" t="Include">
+              <e p="BattleItem.cs" t="Include" />
               <e p="Skill.cs" t="Include" />
               <e p="Unit.cs" t="Include" />
             </e>
@@ -299,6 +300,7 @@
               </e>
               <e p="Position.cs" t="Include" />
               <e p="Quests.cs" t="Include" />
+              <e p="RestRoomManager.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
               <e p="Linegradient.cs" t="Include" />
@@ -311,6 +313,7 @@
               <e p="SliderGradient.cs" t="Include" />
               <e p="UIGradient.cs" t="Include" />
               <e p="UIGradientUtils.cs" t="Include" />
+              <e p="UseButton.cs" t="Include" />
             </e>
           </e>
           <e p="Shaders" t="Include">

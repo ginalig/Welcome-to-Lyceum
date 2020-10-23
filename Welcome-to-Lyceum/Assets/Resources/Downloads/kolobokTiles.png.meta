@@ -65,6 +65,138 @@ TextureImporter:
   - first:
       213: -5401835441377731915
     second: kolobokTiles_10
+  - first:
+      213: 2134384088592557933
+    second: kolobokTiles_10
+  - first:
+      213: 8708497455336387850
+    second: kolobokTiles_11
+  - first:
+      213: -719363754102346739
+    second: kolobokTiles_12
+  - first:
+      213: -8292692469796904278
+    second: kolobokTiles_13
+  - first:
+      213: 2039599954681254566
+    second: kolobokTiles_14
+  - first:
+      213: -8806200289272973458
+    second: kolobokTiles_15
+  - first:
+      213: -5133224279577327511
+    second: kolobokTiles_16
+  - first:
+      213: 4170406223984210214
+    second: kolobokTiles_17
+  - first:
+      213: -4083858259405734790
+    second: kolobokTiles_18
+  - first:
+      213: 836422571311632046
+    second: kolobokTiles_19
+  - first:
+      213: 8920598097816089484
+    second: kolobokTiles_20
+  - first:
+      213: -5627094043867140351
+    second: kolobokTiles_21
+  - first:
+      213: -5906384403461551491
+    second: kolobokTiles_22
+  - first:
+      213: -9144628254650895137
+    second: kolobokTiles_23
+  - first:
+      213: 4159307905507185285
+    second: kolobokTiles_24
+  - first:
+      213: 4153418901614747241
+    second: kolobokTiles_25
+  - first:
+      213: -7723766459139476054
+    second: kolobokTiles_26
+  - first:
+      213: 8966554277883587783
+    second: kolobokTiles_27
+  - first:
+      213: 483445805855641007
+    second: kolobokTiles_28
+  - first:
+      213: 1638721447011213490
+    second: kolobokTiles_29
+  - first:
+      213: 1581388801326066769
+    second: kolobokTiles_30
+  - first:
+      213: 2322575428578958229
+    second: kolobokTiles_31
+  - first:
+      213: -4348809170465786513
+    second: kolobokTiles_32
+  - first:
+      213: 7789161631893655288
+    second: kolobokTiles_33
+  - first:
+      213: -1981002210702078114
+    second: kolobokTiles_34
+  - first:
+      213: -8115804332796366552
+    second: kolobokTiles_35
+  - first:
+      213: -4835114919056923668
+    second: kolobokTiles_36
+  - first:
+      213: -7361078585308933023
+    second: kolobokTiles_37
+  - first:
+      213: 8976246606586066457
+    second: kolobokTiles_38
+  - first:
+      213: -9020543906779287901
+    second: kolobokTiles_39
+  - first:
+      213: -4795951555985524814
+    second: kolobokTiles_40
+  - first:
+      213: 5804580757191281613
+    second: kolobokTiles_41
+  - first:
+      213: 8673619180518330138
+    second: kolobokTiles_42
+  - first:
+      213: -1731369711078568987
+    second: kolobokTiles_43
+  - first:
+      213: 7395688589241860781
+    second: kolobokTiles_44
+  - first:
+      213: -3213318307145594213
+    second: kolobokTiles_45
+  - first:
+      213: -5351792323440390254
+    second: kolobokTiles_46
+  - first:
+      213: -2633179020167901216
+    second: kolobokTiles_47
+  - first:
+      213: -8535451395518051035
+    second: kolobokTiles_48
+  - first:
+      213: -1107959440732003433
+    second: kolobokTiles_49
+  - first:
+      213: -7571443021608828624
+    second: kolobokTiles_50
+  - first:
+      213: -6993062649985337807
+    second: kolobokTiles_51
+  - first:
+      213: -3664586353161079850
+    second: kolobokTiles_52
+  - first:
+      213: 5674878420745462581
+    second: kolobokTiles_53
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -379,7 +511,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 96
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -400,6 +532,48 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d672ec6250bde9d10800000000000000
+      internalID: 2134384088592557933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kolobokTiles_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05f7b8cb4ccad870800000000000000
+      internalID: 8708497455336387850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kolobokTiles_12
+      rect:
+        serializedVersion: 2
+        x: 64
         y: 96
         width: 32
         height: 32
@@ -410,8 +584,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ba90954943d805b0800000000000000
-      internalID: -5401835441377731915
+      spriteID: d0c207c1a7e4406f0800000000000000
+      internalID: -719363754102346739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kolobokTiles_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa2e232a2207aec80800000000000000
+      internalID: -8292692469796904278
       vertices: []
       indices: 
       edges: []

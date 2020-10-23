@@ -16,6 +16,12 @@ public class Quests : ScriptableObject
 
     public int restCharges;
 
+    public int homeRestCooldown;
+    public int otherRestCooldown;
+
+    public GameEvent questCompleted;
+    
+
     public void QuestCompleted(string questName)
     {
         var currentQuest = quests.Find(x => x.name.Equals(questName));
@@ -27,14 +33,17 @@ public class Quests : ScriptableObject
 
         lastCompletedQuestName = questName;
 
-        if (currentQuest.OnQuestCompleted!= null) currentQuest.OnQuestCompleted.Raise();
-       
+        if (currentQuest.OnQuestCompleted != null) currentQuest.OnQuestCompleted.Raise();
+        questCompleted.Raise();
+
+        homeRestCooldown++;
+        otherRestCooldown++;
     }
 
     public bool IsQuestActive(string questName)
     {
         var quest = quests.Find(x => x.name.Equals(questName));
-        return quest.isActive ? true : false;
+        return quest.isActive;
     }
     
     public void ActivateQuest(string questName)
@@ -58,4 +67,27 @@ public class Quests : ScriptableObject
     {
         ES3.Save("Quests", this);
     }
+
+    public void Rest(bool isHome)
+    {
+        if (isHome)
+        {
+            restCharges += 3;
+            homeRestCooldown = 0;
+        }
+        else
+        {
+            restCharges += 2;
+            otherRestCooldown = 0;
+        }
+    }
+    
+}
+
+[System.Serializable]
+public struct RestCooldowns
+{
+    public int cofix;
+    public int kfc;
+    public int home;
 }

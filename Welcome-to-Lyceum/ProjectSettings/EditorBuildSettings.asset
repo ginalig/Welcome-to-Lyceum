@@ -29,6 +29,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cofix.unity
     guid: 83406393efd96a043a6879b2931cb4d7
+  - enabled: 1
+    path: Assets/Scenes/RestRooms.unity
+    guid: 0ce3d538997bab84cae7eb4d546c0379
+  - enabled: 1
+    path: Assets/Scenes/Stairs.unity
+    guid: 41ceb21dd6ce59a418482144ba4498f2
+  - enabled: 1
+    path: Assets/Scenes/KFC.unity
+    guid: aa7aeec2320c33944affd54b59875332
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: d4a5d89f8c8499c46a475122f490b0eb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c477c3224cbd8844b9b0f8135ad0d1d5,
       type: 2}

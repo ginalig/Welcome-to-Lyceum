@@ -96,6 +96,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""a3614d4f-8392-4798-9fee-2fd2a848ca60"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mobiles"",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""2D Vector"",
                     ""id"": ""b4307bcc-2658-4356-bbfc-4948df3dd6b8"",
                     ""path"": ""2DVector"",
@@ -235,6 +246,11 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Mobiles"",
+            ""bindingGroup"": ""Mobiles"",
+            ""devices"": []
         }
     ]
 }");
@@ -389,6 +405,15 @@ public class @InputMaster : IInputActionCollection, IDisposable
         {
             if (m_KeyboardandmouseSchemeIndex == -1) m_KeyboardandmouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard and mouse");
             return asset.controlSchemes[m_KeyboardandmouseSchemeIndex];
+        }
+    }
+    private int m_MobilesSchemeIndex = -1;
+    public InputControlScheme MobilesScheme
+    {
+        get
+        {
+            if (m_MobilesSchemeIndex == -1) m_MobilesSchemeIndex = asset.FindControlSchemeIndex("Mobiles");
+            return asset.controlSchemes[m_MobilesSchemeIndex];
         }
     }
     public interface IPlayerActions

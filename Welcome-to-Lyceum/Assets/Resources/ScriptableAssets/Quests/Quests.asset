@@ -20,9 +20,9 @@ MonoBehaviour:
     name: "\u0420\u0430\u0437\u0431\u0435\u0440\u0438\u0441\u044C \u0441 \u0431\u0435\u0441\u044F\u0447\u0438\u043C
       \u0447\u0435\u043B\u043E\u043C"
     description: 
-    location: 204
+    location: 203
     sceneName: 
-    isActive: 0
+    isActive: 1
     OnQuestCompleted: {fileID: 0}
   - questGoal:
       goalType: 1
@@ -35,7 +35,10 @@ MonoBehaviour:
     isActive: 1
     OnQuestCompleted: {fileID: 0}
   isAbleToLoad: 0
-  sceneToLoad: FightScene1
+  sceneToLoad: Stairs
   lastCompletedQuestName: "\u0420\u0430\u0437\u0431\u0435\u0440\u0438\u0441\u044C
     \u0441 \u0431\u0435\u0441\u044F\u0447\u0438\u043C \u0447\u0435\u043B\u043E\u043C"
-  restCharges: 7
+  restCharges: 33
+  homeRestCooldown: 11
+  otherRestCooldown: 8
+  questCompleted: {fileID: 11400000, guid: b3d8cba7fc750924ba747eac14c7ead7, type: 2}

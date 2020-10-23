@@ -23,6 +23,7 @@ public class Skill
     public int cooldown;
     public int currentCooldown;
     public bool isActive = true;
+    public bool isRandomized = true;
     public UnityEvent OnUsedEvent;
 
     public void CheckCooldown()

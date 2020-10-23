@@ -22,7 +22,6 @@ public class Cofix : MonoBehaviour
     
     public IEnumerator DrinkCoffee()
     {
-        quests.AddRestCharges(restCharges);
         buttonAnimator.SetBool("IsButtonActive", false);
         yield return new WaitForSeconds(1.6f);
         buttonAnimator.gameObject.SetActive(false);

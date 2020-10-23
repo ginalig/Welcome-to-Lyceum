@@ -10,13 +10,24 @@ public class FightTransition : MonoBehaviour
     
     public string sceneToLoad;
     public string questName;
+
+    public bool isToStairs = false;
+    
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && questsRef.IsQuestActive(questName))
+        if (other.CompareTag("Player")) 
         {
-            questsRef.sceneToLoad = sceneToLoad;
-            questsRef.isAbleToLoad = true;
+            if (isToStairs)
+            {
+                questsRef.sceneToLoad = sceneToLoad;
+                questsRef.isAbleToLoad = true;
+            }
+            else if (questsRef.IsQuestActive(questName))
+            {
+                questsRef.sceneToLoad = sceneToLoad;
+                questsRef.isAbleToLoad = true;
+            }
         }
     }
 
