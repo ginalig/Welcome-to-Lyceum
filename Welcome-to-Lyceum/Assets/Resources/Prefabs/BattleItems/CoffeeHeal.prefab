@@ -4872,7 +4872,18 @@ MonoBehaviour:
   ps: {fileID: 5623272898380715684}
   OnStartEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 871e1a35a2a5a4f47a7846716b4d548c, type: 2}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Drink
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFinishEvent:
     m_PersistentCalls:
       m_Calls:

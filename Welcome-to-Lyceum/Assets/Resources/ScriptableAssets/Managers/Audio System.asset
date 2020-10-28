@@ -54,3 +54,13 @@ MonoBehaviour:
     volume: 0.879
     pitch: 1
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 33ae0a9e323cd264890410d442ae4a51, type: 3}
+    name: Drink
+    volume: 0.879
+    pitch: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c0b7b1019b887734c9013b20bd5cc12f, type: 3}
+    name: Eat
+    volume: 0.879
+    pitch: 1
+    source: {fileID: 0}
