@@ -10,7 +10,7 @@
       <e p="Assets" t="Include">
         <e p="Easy Save 3" t="Include">
           <e p="Types" t="Include">
-            <e p="ES3UserType_Transform.cs" t="Include" />
+            <e p="ES3UserType_ES3Type_ParticleSystem.cs" t="Include" />
           </e>
         </e>
         <e p="Plugins" t="Include">
@@ -244,6 +244,7 @@
           <e p="Scripts" t="Include">
             <e p="Battle" t="Include">
               <e p="BattleItem.cs" t="Include" />
+              <e p="RandomSprite.cs" t="Include" />
               <e p="Skill.cs" t="Include" />
               <e p="Unit.cs" t="Include" />
             </e>
@@ -303,6 +304,7 @@
               <e p="RestRoomManager.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
+              <e p="CameraShaker.cs" t="Include" />
               <e p="Linegradient.cs" t="Include" />
               <e p="PartIconColor.cs" t="Include" />
               <e p="PlayerUI.cs" t="Include" />

@@ -33,14 +33,23 @@ EditorBuildSettings:
     path: Assets/Scenes/RestRooms.unity
     guid: 0ce3d538997bab84cae7eb4d546c0379
   - enabled: 1
+    path: Assets/Scenes/Floor3.unity
+    guid: 80616ff1272a99941b78dceeb8ce6875
+  - enabled: 1
     path: Assets/Scenes/Stairs.unity
     guid: 41ceb21dd6ce59a418482144ba4498f2
   - enabled: 1
     path: Assets/Scenes/KFC.unity
     guid: aa7aeec2320c33944affd54b59875332
   - enabled: 1
+    path: Assets/Scenes/FightScene2.unity
+    guid: 61c923d929a1f3b45978ffa68867a59f
+  - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: d4a5d89f8c8499c46a475122f490b0eb
+  - enabled: 1
+    path: Assets/Scenes/FightScene3.unity
+    guid: 740d783424bbf394989875ea629b96b8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c477c3224cbd8844b9b0f8135ad0d1d5,
       type: 2}

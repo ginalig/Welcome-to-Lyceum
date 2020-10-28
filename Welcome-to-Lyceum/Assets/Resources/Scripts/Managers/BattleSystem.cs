@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 
 
@@ -75,6 +75,8 @@ public class BattleSystem : MonoBehaviour
     
     public List<GameObject> prefabs;
 
+    private Skill[] temp = {};
+
 
     private void Start()
     {
@@ -128,24 +130,28 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator Action(Skill skill)
     {
-        dialogueText.text = skill.description.Replace("{rand}", Random.Range(-100, 100).ToString());
+        dialogueText.text = skill.description.Replace("{rand}", UnityEngine.Random.Range(-100, 100).ToString());
 
         bool isNextPlayerTurn = false;
         bool isWin = false;
         bool isLose = false;
+        bool isKasha = false;
         
         if (battleState == BattleState.PlayerTurn)
         {
             if (skill.skillType == SkillType.DealDamage)
             {
                 isWin = EnemyTakeDamage(skill.amount, skill.isRandomized);
-                // if (EnemyTakeDamage(skill.amount, skill.isRandomized))
-                //     StartCoroutine(Win());
             }
 
             if (skill.skillType == SkillType.Heal)
             {
                 PlayerTakeHeal(skill.amount);
+            }
+            
+            if (skill.skillType == SkillType.SelfDamage)
+            {
+                isLose = PlayerTakeDamage(skill.amount, skill.isRandomized);
             }
 
             if (skill.skillType == SkillType.SkipTurn)
@@ -167,7 +173,6 @@ public class BattleSystem : MonoBehaviour
             if (skill.skillType == SkillType.DealDamage)
             {
                 isLose = PlayerTakeDamage(skill.amount, skill.isRandomized);
-                    //StartCoroutine(Lose());
             }
 
             if (skill.skillType == SkillType.Heal)
@@ -178,8 +183,6 @@ public class BattleSystem : MonoBehaviour
             if (skill.skillType == SkillType.SelfDamage)
             {
                 isWin = EnemyTakeDamage(skill.amount, skill.isRandomized);
-                // if (EnemyTakeDamage(skill.amount, skill.isRandomized))
-                //     StartCoroutine(Win());
             }
 
             if (skill.skillType == SkillType.SkipTurn)
@@ -192,15 +195,37 @@ public class BattleSystem : MonoBehaviour
             {
                 isNextPlayerTurn = true;
             }
+
+            if (skill.skillType == SkillType.Kasha)
+            {
+                dialogueText.text = skill.description;
+                //Array.Copy(playerSkills, temp, temp.Length);
+                //Array.Resize(ref playerSkills, 1);
+                // eat = new Skill();
+                //eat.skillType = SkillType.SelfDamage;
+                //eat.name = "Съесть кашу";
+                //eat.description = "";
+                //eat.manaCost = 10;
+                //eat.amount = 15;
+                //eat.isActive = true;
+                //eat.isRandomized = true;
+                //eat.cooldown = 0;
+                //eat.OnUsedEvent.AddListener(BackupSkills);
+                //playerSkills[0] = eat;
+                Kasha();
+
+                isKasha = true;
+            }
         }
         
         skill.OnUsed();
         
-        UpdateSkillCooldowns();
+        if(!isKasha)
+            UpdateSkillCooldowns();
         
         ClearSkillsList();
         
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f + skill.additionalTime);
 
         if (isWin)
         {
@@ -229,7 +254,7 @@ public class BattleSystem : MonoBehaviour
     {
         int damage = amount;
         if (isRandomized)
-            damage += Random.Range(-3, 3);
+            damage += UnityEngine.Random.Range(-3, 3);
         
         dialogueText.text += $" Тебе нанесли {damage} урона!";
 
@@ -255,7 +280,7 @@ public class BattleSystem : MonoBehaviour
     {
         int damage = amount;
         if (isRandomized)
-            damage += Random.Range(-3, 3);
+            damage += UnityEngine.Random.Range(-3, 3);
 
         dialogueText.text += $" Противнику нанесено {damage} урона!";
         
@@ -274,7 +299,26 @@ public class BattleSystem : MonoBehaviour
 
         EnemyCurrentHealth += amount;
         enemyHealthBar.value = EnemyCurrentHealth;
-        
+    }
+
+    private void Kasha()
+    {
+        for (int i = 0; i < playerSkills.Length - 1; i++)
+        {
+            playerSkills[i].isActive = false;
+        }
+        playerSkills[playerSkills.Length - 1].currentCooldown = playerSkills[playerSkills.Length - 1].cooldown;
+        playerSkills[playerSkills.Length - 1].CheckCooldown();
+    }
+    
+    public void BackupSkills()
+    {
+        for (int i = 0; i < playerSkills.Length - 1; i++)
+        {
+            playerSkills[i].CheckCooldown();
+        }
+
+        playerSkills[playerSkills.Length - 1].currentCooldown = 0;
     }
 
     private IEnumerator Win()
@@ -296,19 +340,28 @@ public class BattleSystem : MonoBehaviour
 
     private Skill GetRandomSkill(Skill[] skills)
     {
-        while (true)
+        var indexes = new int[skills.Length];
+        for (int i = 0; i < indexes.Length; i++)
         {
-            var temp = skills[Random.Range(0, skills.Length - 1)];
-            if (temp.isActive)
-                return temp;
+            indexes[i] = i;
         }
-    }
 
+        var rand = new System.Random();
+        var randomIndexes = indexes.OrderBy(x => rand.Next()).ToArray();
+        foreach (var index in randomIndexes)
+        {
+            if (skills[index].isActive) return skills[index];
+        }
+
+        return skills[UnityEngine.Random.Range(0, skills.Length)];
+    }
+    
     public void SpawnItem(string itemName)
     {
         var item = prefabs.Find(x => x.name.Equals(itemName));
         Instantiate(item);
     }
+
     
     private void UpdateSkillsList()
     {

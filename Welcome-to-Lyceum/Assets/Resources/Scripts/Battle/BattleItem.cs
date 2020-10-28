@@ -10,6 +10,11 @@ public class BattleItem : MonoBehaviour
     public UnityEvent OnStartEvent;
     public UnityEvent OnFinishEvent;
 
+    private void Start()
+    {
+        OnStart();
+    }
+    
     public void OnStart()
     {
         OnStartEvent.Invoke();
@@ -28,6 +33,7 @@ public class BattleItem : MonoBehaviour
 
     public void SelfDestroy()
     {
+        OnFinish();
        if (ps != null) ps.transform.parent = null;
         Destroy(gameObject);
     }

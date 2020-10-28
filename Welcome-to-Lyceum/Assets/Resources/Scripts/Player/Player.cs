@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,6 +37,8 @@ namespace Resources.Scripts
         public float attackRange;
         public float stressLevel;
         public int attackDamage;
+        public CinemachineImpulseSource impulseSource;
+        public GameEvent cameraShakeEvent;
         private bool isAbleToAttack = true;
         private int isConfused = -1;
         public Position playerPosition;
@@ -125,6 +128,7 @@ namespace Resources.Scripts
             if (Random.value >= 0.5) audioSystem.Play("Attack1");
             else audioSystem.Play("Attack2");
             
+            impulseSource.GenerateImpulse();
              
             isAbleToAttack = false;
             yield return new WaitForSeconds(0.5f); // Cooldown

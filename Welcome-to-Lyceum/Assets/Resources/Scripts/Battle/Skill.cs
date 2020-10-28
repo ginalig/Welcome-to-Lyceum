@@ -8,7 +8,8 @@ public enum SkillType
     Heal,
     DealDamage,
     SkipTurn,
-    SelfDamage
+    SelfDamage,
+    Kasha
 }
 
 [System.Serializable]
@@ -24,6 +25,7 @@ public class Skill
     public int currentCooldown;
     public bool isActive = true;
     public bool isRandomized = true;
+    public int additionalTime;
     public UnityEvent OnUsedEvent;
 
     public void CheckCooldown()
@@ -40,4 +42,5 @@ public class Skill
         currentCooldown = -1;
         OnUsedEvent.Invoke();
     }
+
 }
