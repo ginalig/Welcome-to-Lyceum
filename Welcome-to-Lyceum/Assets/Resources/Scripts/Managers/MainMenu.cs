@@ -9,6 +9,13 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject continueButton = null;
     [SerializeField] private SceneLoader sceneLoader = null;
+    [Header("MainQuests")]
+    [SerializeField] private Quests defaultQuests = null;
+    [SerializeField] private Quests quests = null;
+    [Header("TutorialQuests")]
+    [SerializeField] private Quests defaultTutorialQuests = null;
+    [SerializeField] private Quests tutorialQuests = null;
+
 
     private void Start()
     {
@@ -27,6 +34,9 @@ public class MainMenu : MonoBehaviour
         {
             ES3.DeleteKey(key);
         }
+
+        tutorialQuests.SetQuests(defaultTutorialQuests);
+        quests.SetQuests(defaultQuests);
     }
     
     public void Continue()

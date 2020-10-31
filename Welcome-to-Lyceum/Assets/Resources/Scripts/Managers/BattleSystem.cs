@@ -69,7 +69,6 @@ public class BattleSystem : MonoBehaviour
     
     [SerializeField] private Quests quests = null;
     [SerializeField] private string questName = null;
-    [SerializeField] private int restCharges = 0;
 
     [Header("Prefabs To Animate")] 
     
@@ -199,19 +198,7 @@ public class BattleSystem : MonoBehaviour
             if (skill.skillType == SkillType.Kasha)
             {
                 dialogueText.text = skill.description;
-                //Array.Copy(playerSkills, temp, temp.Length);
-                //Array.Resize(ref playerSkills, 1);
-                // eat = new Skill();
-                //eat.skillType = SkillType.SelfDamage;
-                //eat.name = "Съесть кашу";
-                //eat.description = "";
-                //eat.manaCost = 10;
-                //eat.amount = 15;
-                //eat.isActive = true;
-                //eat.isRandomized = true;
-                //eat.cooldown = 0;
-                //eat.OnUsedEvent.AddListener(BackupSkills);
-                //playerSkills[0] = eat;
+                
                 Kasha();
 
                 isKasha = true;
@@ -325,7 +312,6 @@ public class BattleSystem : MonoBehaviour
     {
         dialogueText.text = "Победа! " + winDialogueText;
         quests.QuestCompleted(questName);
-        quests.restCharges += restCharges;
         yield return new WaitForSeconds(2);
         sceneLoader.LoadScene(ES3.Load<string>("CurrentLevelName"));
     }

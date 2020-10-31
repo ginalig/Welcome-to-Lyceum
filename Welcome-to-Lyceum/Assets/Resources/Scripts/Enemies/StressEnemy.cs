@@ -11,10 +11,11 @@ using UnityEngine;
 public class StressEnemy : MonoBehaviour
 {
     private Player player;
-    private Transform playerPosition;
 
     [SerializeField] private Rigidbody2D rigidBody = null;
-    [SerializeField] private Rigidbody2D playerRigidBody = null;
+    [SerializeField] private Velocity playerRbAsset = null;
+    [SerializeField] private Position playerPositionAsset = null;
+    private Rigidbody2D playerRigidBody = null;
 
     [SerializeField] private float dangerDistance = 0f;
     [SerializeField] private float safeDistance = 0f;
@@ -26,14 +27,15 @@ public class StressEnemy : MonoBehaviour
     void Start()
     {
         player = Player.Instance;
+        playerRigidBody = playerRbAsset.rb;
     }
 
     void FixedUpdate()
     {
-        if (math.abs(player.transform.position.x - transform.position.x) <= safeDistance) // Если стресс слишком близко, ничего не делать
-            return; 
+        if (math.abs(playerPositionAsset.position.x - transform.position.x) <= safeDistance) // Если стресс слишком близко, ничего не делать
+            return;
         
-        playerPosition = player.transform;
+        //playerPosition.position = playerPositionAsset.position;
         
         LookAtPlayer();
         
@@ -41,18 +43,11 @@ public class StressEnemy : MonoBehaviour
         
     }
 
-    public IEnumerator StopMovingForSeconds(float seconds)
-    {
-        isAbleToMove = false;
-        yield return new WaitForSeconds(seconds);
-        isAbleToMove = true;
-    }
-
     private void LookAtPlayer()
     {
-        if (playerPosition.position.x < transform.position.x)
+        if (playerPositionAsset.position.x < transform.position.x)
             transform.right = Vector3.left;
-        else if (playerPosition.position.x > transform.position.x)
+        else if (playerPositionAsset.position.x > transform.position.x)
             transform.right = Vector3.right;
     }
 
@@ -60,15 +55,15 @@ public class StressEnemy : MonoBehaviour
     {
         var playerVelocity = playerRigidBody.velocity;
 
-        if ((playerVelocity.x > 0 && playerPosition.position.x < transform.position.x ||
-             playerVelocity.x < 0 && playerPosition.position.x > transform.position.x) &&
-            math.abs(playerPosition.position.x - transform.position.x) <= dangerDistance) 
+        if ((playerVelocity.x > 0 && playerPositionAsset.position.x < transform.position.x ||
+             playerVelocity.x < 0 && playerPositionAsset.position.x > transform.position.x) &&
+            math.abs(playerPositionAsset.position.x - transform.position.x) <= dangerDistance) 
         {
-            rigidBody.velocity = (playerPosition.position - transform.position).normalized * -2;
+            rigidBody.velocity = (new Vector3(playerPositionAsset.position.x, playerPositionAsset.position.y, 0) - transform.position).normalized * -2;
         }
         else
         {
-            rigidBody.velocity = (playerPosition.position - transform.position).normalized * 4;
+            rigidBody.velocity = (new Vector3(playerPositionAsset.position.x, playerPositionAsset.position.y, 0) - transform.position).normalized * 4;
         }
     }
     

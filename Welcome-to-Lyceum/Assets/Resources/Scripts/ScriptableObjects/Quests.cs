@@ -20,8 +20,16 @@ public class Quests : ScriptableObject
     public int otherRestCooldown;
 
     public GameEvent questCompleted;
-    
 
+
+    public void SetQuests(Quests other)
+    {
+        quests = other.quests;
+        restCharges = other.restCharges;
+        homeRestCooldown = other.homeRestCooldown;
+        otherRestCooldown = other.otherRestCooldown;
+    }
+    
     public void QuestCompleted(string questName)
     {
         var currentQuest = quests.Find(x => x.name.Equals(questName));

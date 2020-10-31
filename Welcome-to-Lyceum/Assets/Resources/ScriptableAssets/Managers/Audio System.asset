@@ -64,3 +64,8 @@ MonoBehaviour:
     volume: 0.879
     pitch: 1
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
+    name: Kolonka
+    volume: 0.879
+    pitch: 1
+    source: {fileID: 0}

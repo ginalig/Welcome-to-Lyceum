@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Content/Position")]
 public class Position : ScriptableObject
 {
-    public Vector2 position;
+    public Vector3 position;
 }

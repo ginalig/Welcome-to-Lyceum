@@ -49,6 +49,8 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = dialogue;
 
         textName.text = dialogue.name;
+
+        NPCIcon.sprite = dialogue.NPCIcon;
         
         sentences.Clear();
 

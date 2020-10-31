@@ -8,6 +8,7 @@ TagManager:
   - DamageArea
   - Enemy
   - Stress
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Enemy
   - PostProcessing
-  - 
+  - Player
   - 
   - 
   - 
@@ -44,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 3226294127
     locked: 0
   - name: Player
     uniqueID: 365526741

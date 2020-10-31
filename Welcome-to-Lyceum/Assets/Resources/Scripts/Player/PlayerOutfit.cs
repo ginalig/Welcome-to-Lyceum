@@ -24,12 +24,6 @@ public class PlayerOutfit : MonoBehaviour
             parts[i].color = new Color(playerOutfitData.allColors[i, 0], 
                 playerOutfitData.allColors[i, 1], playerOutfitData.allColors[i, 2]);
         }
-        
-        // var temp = ES3.Load("PlayerOutfit", new List<SpriteRenderer>());
-        // for (int i = 0; i < parts.Count; i++)
-        // {
-        //     parts[i] = temp[i];
-        // }
     }
 
     /// <summary>

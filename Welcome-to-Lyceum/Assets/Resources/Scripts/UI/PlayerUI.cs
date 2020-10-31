@@ -21,6 +21,11 @@ public class PlayerUI : MonoBehaviour
 
     private bool isQuestMenuOpened = false;
 
+    private void Start()
+    {
+        quests.isAbleToLoad = false;
+    }
+
     private void Update()
     {
         useButton.SetActive(quests.isAbleToLoad);

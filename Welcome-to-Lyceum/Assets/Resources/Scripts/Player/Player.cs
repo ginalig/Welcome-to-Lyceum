@@ -19,7 +19,6 @@ namespace Resources.Scripts
 
         public AudioSystem audioSystem;
         private Vector2 direction = Vector2.zero;
-        private GameManager gameManager = null;
 
         public Rigidbody2D rb;
         public GroundDetection groundDetection;
@@ -28,7 +27,6 @@ namespace Resources.Scripts
         public Transform attackPoint;
         public LayerMask enemyLayers;
         public Slider stressBar;
-        public GameObject stressedEffectImage;
 
         public ParticleSystem hitEffect;
         
@@ -38,15 +36,20 @@ namespace Resources.Scripts
         public float stressLevel;
         public int attackDamage;
         public CinemachineImpulseSource impulseSource;
-        public GameEvent cameraShakeEvent;
+        public GameEvent stressEffectBegin;
+        public GameEvent stressEffectEnd;
         private bool isAbleToAttack = true;
         private int isConfused = -1;
         public Position playerPosition;
         public Position playerStartPosition;
+        public Velocity rbAsset;
+        public Quests quests;
 
         public bool isTutroial = false;
         
         private bool isInDamageArea = false;
+        
+        private IEnumerator confusionCoroutine;
 
         public static Player Instance;
 
@@ -63,11 +66,14 @@ namespace Resources.Scripts
 
         private void Start()
         {
-            gameManager = GameManager.instance;
-
+            
             var startPosition = playerStartPosition.position;
             transform.SetPositionAndRotation(startPosition, quaternion.identity);
             transform.position = playerStartPosition.position;
+
+            rbAsset.rb = rb;
+
+            confusionCoroutine = GetConfused();
         }
 
         private void Update()
@@ -136,6 +142,7 @@ namespace Resources.Scripts
 
         }
 
+
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag("DamageArea"))
@@ -162,7 +169,7 @@ namespace Resources.Scripts
 
         private IEnumerator StartDecreasingStress()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSecondsRealtime(3f);
             
             while (stressLevel > 0 && !isInDamageArea)
             {
@@ -176,10 +183,14 @@ namespace Resources.Scripts
             isConfused = 1;
             var prevSpeed = speed;
             StartCoroutine(GetConfusedSpeed());
-            stressedEffectImage.SetActive(true);
-            yield return new WaitForSeconds(10);
+            //stressedEffectImage.SetActive(true);
+            quests.isAbleToLoad = false;
+            stressEffectBegin.Raise();
+            yield return new WaitForSecondsRealtime(10);
             StopCoroutine(GetConfusedSpeed());
-            stressedEffectImage.SetActive(false);
+            stressLevel = 0;
+            stressEffectEnd.Raise();
+            //stressedEffectImage.SetActive(false);
             speed = 5;
             isConfused = -1;
         }

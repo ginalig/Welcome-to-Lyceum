@@ -81,6 +81,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""f6ef60d8-59c1-47aa-9a4b-7c608e6924fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -226,6 +234,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Load"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e50f3614-1e10-4480-9bab-57124564e793"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -264,6 +283,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_QuestMenuOpen = m_Player.FindAction("QuestMenuOpen", throwIfNotFound: true);
         m_Player_QuestMenuClose = m_Player.FindAction("QuestMenuClose", throwIfNotFound: true);
         m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -321,6 +341,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_QuestMenuOpen;
     private readonly InputAction m_Player_QuestMenuClose;
     private readonly InputAction m_Player_Load;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -333,6 +354,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @QuestMenuOpen => m_Wrapper.m_Player_QuestMenuOpen;
         public InputAction @QuestMenuClose => m_Wrapper.m_Player_QuestMenuClose;
         public InputAction @Load => m_Wrapper.m_Player_Load;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -366,6 +388,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Load.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
                 @Load.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
                 @Load.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
+                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -394,6 +419,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Load.started += instance.OnLoad;
                 @Load.performed += instance.OnLoad;
                 @Load.canceled += instance.OnLoad;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -426,5 +454,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnQuestMenuOpen(InputAction.CallbackContext context);
         void OnQuestMenuClose(InputAction.CallbackContext context);
         void OnLoad(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

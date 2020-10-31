@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.8625035, b: 0.5613208, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -91,6 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 0}
   loadingBar: {fileID: 0}
+  onGameSaved: {fileID: 0}
+  questsRef: {fileID: 0}
 --- !u!1 &2267136122447901970
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +242,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -312,6 +316,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -385,6 +390,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -541,6 +547,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -724,3 +731,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 2267136122292159041}
   loadingBar: {fileID: 2267136122447901968}
+  onGameSaved: {fileID: 11400000, guid: 1975b8116c2e9474c8734410743c006e, type: 2}
+  questsRef: {fileID: 11400000, guid: c3c24a33efc3e8e47993bf61863916b1, type: 2}

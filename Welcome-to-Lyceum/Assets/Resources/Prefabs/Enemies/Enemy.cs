@@ -29,13 +29,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (quests.restCharges == 0) damage = 0;
         currentHp -= damage;
 
-        if (gameObject.CompareTag("Stress"))
-        {
-            var stress = gameObject.GetComponent<StressEnemy>();
-            StartCoroutine(stress.StopMovingForSeconds(shaking._time));
-        }
+        // if (gameObject.CompareTag("Stress"))
+        // {
+        //     var stress = gameObject.GetComponent<StressEnemy>();
+        //     StartCoroutine(stress.StopMovingForSeconds(shaking._time));
+        // }
 
         shaking.Begin();
         
@@ -48,7 +49,7 @@ public class Enemy : MonoBehaviour
     {
         foreach (var quest in quests.quests)
         {
-            if (quest.isActive)
+            if (quest.isActive && quest.questGoal.goalType == GoalType.Kill)
             {
                 quest.questGoal.EnemyKilled();
                 if (quest.questGoal.IsReached())
@@ -57,6 +58,8 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+
+        quests.restCharges--;
         gameObject.SetActive(false);
     }
 
