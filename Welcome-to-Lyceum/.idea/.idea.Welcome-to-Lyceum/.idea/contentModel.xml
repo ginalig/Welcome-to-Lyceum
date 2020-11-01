@@ -292,6 +292,12 @@
             </e>
           </e>
           <e p="Scripts" t="Include">
+            <e p="Basketball" t="Include">
+              <e p="Ball.cs" t="Include" />
+              <e p="Basket.cs" t="Include" />
+              <e p="BasketballManager.cs" t="Include" />
+              <e p="Trajectory.cs" t="Include" />
+            </e>
             <e p="Battle" t="Include">
               <e p="BattleItem.cs" t="Include" />
               <e p="Pelmeniparticle.cs" t="Include" />

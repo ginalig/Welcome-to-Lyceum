@@ -76,6 +76,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DragStart",
+                    "type": "Button",
+                    "id": "f19f886a-2073-4d28-b46f-464f92f735a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DragEnd",
+                    "type": "Button",
+                    "id": "c418bd18-15e9-482f-bfed-eb264a284ed2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -230,6 +246,28 @@
                     "processors": "",
                     "groups": "Keyboard and mouse",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c76cd5e-185f-4413-9276-8354a810dd4d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3538df6f-4313-4b23-b620-17c211853fc4",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragEnd",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

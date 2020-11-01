@@ -89,6 +89,22 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DragStart"",
+                    ""type"": ""Button"",
+                    ""id"": ""f19f886a-2073-4d28-b46f-464f92f735a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DragEnd"",
+                    ""type"": ""Button"",
+                    ""id"": ""c418bd18-15e9-482f-bfed-eb264a284ed2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -245,6 +261,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c76cd5e-185f-4413-9276-8354a810dd4d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DragStart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3538df6f-4313-4b23-b620-17c211853fc4"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DragEnd"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -284,6 +322,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_QuestMenuClose = m_Player.FindAction("QuestMenuClose", throwIfNotFound: true);
         m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_DragStart = m_Player.FindAction("DragStart", throwIfNotFound: true);
+        m_Player_DragEnd = m_Player.FindAction("DragEnd", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -342,6 +382,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_QuestMenuClose;
     private readonly InputAction m_Player_Load;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_DragStart;
+    private readonly InputAction m_Player_DragEnd;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -355,6 +397,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @QuestMenuClose => m_Wrapper.m_Player_QuestMenuClose;
         public InputAction @Load => m_Wrapper.m_Player_Load;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @DragStart => m_Wrapper.m_Player_DragStart;
+        public InputAction @DragEnd => m_Wrapper.m_Player_DragEnd;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,6 +435,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @DragStart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDragStart;
+                @DragStart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDragStart;
+                @DragStart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDragStart;
+                @DragEnd.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDragEnd;
+                @DragEnd.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDragEnd;
+                @DragEnd.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDragEnd;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -422,6 +472,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @DragStart.started += instance.OnDragStart;
+                @DragStart.performed += instance.OnDragStart;
+                @DragStart.canceled += instance.OnDragStart;
+                @DragEnd.started += instance.OnDragEnd;
+                @DragEnd.performed += instance.OnDragEnd;
+                @DragEnd.canceled += instance.OnDragEnd;
             }
         }
     }
@@ -455,5 +511,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnQuestMenuClose(InputAction.CallbackContext context);
         void OnLoad(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnDragStart(InputAction.CallbackContext context);
+        void OnDragEnd(InputAction.CallbackContext context);
     }
 }

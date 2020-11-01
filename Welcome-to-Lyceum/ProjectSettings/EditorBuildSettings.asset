@@ -53,6 +53,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pelmeni.unity
     guid: 199ce46cdf010c04fa5d8dfe32d7e17b
+  - enabled: 1
+    path: Assets/Scenes/Floor4.unity
+    guid: 1578a5ab75e85c84b98ab41d231fba71
+  - enabled: 1
+    path: Assets/Scenes/FightScene4.unity
+    guid: 77400d96553241542b025ddfe72f95ac
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c477c3224cbd8844b9b0f8135ad0d1d5,
       type: 2}

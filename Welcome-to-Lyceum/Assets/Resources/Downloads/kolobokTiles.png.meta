@@ -206,6 +206,9 @@ TextureImporter:
   - first:
       213: 5683384056095243001
     second: kolobokTiles_13
+  - first:
+      213: 2923350456000142733
+    second: kolobokTiles_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -603,8 +606,8 @@ TextureImporter:
       name: kolobokTiles_13
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
+        x: 192
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -624,6 +627,27 @@ TextureImporter:
       name: kolobokTiles_14
       rect:
         serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d5ddb40c3d19820800000000000000
+      internalID: 2923350456000142733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kolobokTiles_15
+      rect:
+        serializedVersion: 2
         x: 96
         y: 96
         width: 32
@@ -635,8 +659,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a2ddae3a5d1e4c10800000000000000
-      internalID: 2039599954681254566
+      spriteID: e6731f08e771ac580800000000000000
+      internalID: -8806200289272973458
       vertices: []
       indices: 
       edges: []
