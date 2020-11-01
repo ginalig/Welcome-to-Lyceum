@@ -2,16 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
     public BasketballManager manager;
-    
+    public AudioSystem AudioSystem;
+
     public Rigidbody2D rb;
     public CircleCollider2D col;
     
     public Transform groundPosition;
     public Vector3 ballStartPosition;
+
+    public float randomizeSpawnPoint;
     
     public Vector3 pos => transform.position;
     
@@ -28,6 +32,7 @@ public class Ball : MonoBehaviour
     public void Push(Vector2 force)
     {
         rb.AddForce(force, ForceMode2D.Impulse);
+        AudioSystem.Play("Attack2");
     }
     
     public void ActivateRb()
@@ -44,7 +49,8 @@ public class Ball : MonoBehaviour
 
     private void Reset()
     {
-        transform.position = ballStartPosition;
+        transform.position = ballStartPosition + new Vector3(Random.Range(-randomizeSpawnPoint, randomizeSpawnPoint),
+            Random.Range(-randomizeSpawnPoint, randomizeSpawnPoint));
         DeactivateRb();
         manager.isAbleToDrag = true;
 
@@ -54,6 +60,12 @@ public class Ball : MonoBehaviour
         }
 
         manager.isScored = false;
+        manager.Reset();
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.relativeVelocity.magnitude > 13)
+            AudioSystem.Play("HitEnemy");
+    }
 }

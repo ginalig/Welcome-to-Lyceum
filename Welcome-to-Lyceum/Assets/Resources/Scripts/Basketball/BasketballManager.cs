@@ -12,6 +12,7 @@ public class BasketballManager : MonoBehaviour
     
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
+    public TMP_Text restChargesText;
 
     [Header("Objects")] 
     
@@ -27,6 +28,12 @@ public class BasketballManager : MonoBehaviour
     [Header("Events")] 
     
     public UnityEvent onScoredEvent;
+
+    [Header("Quests")]
+    
+    public Quests quests;
+
+    [Header("Dialogues")] public DialogueTrigger DialogueTrigger;
 
     private InputMaster controls;
     private bool isDragging;
@@ -50,7 +57,7 @@ public class BasketballManager : MonoBehaviour
     void Start()
     {
         highScore = ES3.Load("BasketballHighScore", 0);
-        highScoreText.text = $"Рекорд: {highScore}";
+        DialogueTrigger.TriggerDialogue();
     }
 
     private void Update()
@@ -59,6 +66,7 @@ public class BasketballManager : MonoBehaviour
 
         scoreText.text = $"Счет: {score}";
         highScoreText.text = $"Рекорд: {highScore}";
+        restChargesText.text = $"Заряды отдыха: {quests.restCharges}";
     }
 
     public void Score()
@@ -69,6 +77,7 @@ public class BasketballManager : MonoBehaviour
             highScore = score;
             UpdateHighScore();
         }
+        if (score % 5 == 0) quests.AddRestCharges(1);
 
         isScored = true;
         
@@ -111,6 +120,14 @@ public class BasketballManager : MonoBehaviour
         mDirection = (mStartPos - mEndPos).normalized;
         mForce = mDirection * (mDistance * force * 0.1f);
         trajectory.UpdateDots(ball.pos, mForce, ball.rb.gravityScale);
+    }
+
+    public void Reset()
+    {
+        mEndPos = Vector2.zero;
+        mDistance = 0;
+        mDirection = Vector2.zero;
+        mForce = Vector2.zero;
     }
 
     private void OnEnable()
