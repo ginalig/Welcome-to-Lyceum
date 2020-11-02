@@ -65,6 +65,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OGE.unity
     guid: 1c9b286e1bafbb74ab806a4a034ef263
+  - enabled: 1
+    path: Assets/Scenes/Floor1.unity
+    guid: 41ad0012cf7f2084aaac763ad57473b6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c477c3224cbd8844b9b0f8135ad0d1d5,
       type: 2}

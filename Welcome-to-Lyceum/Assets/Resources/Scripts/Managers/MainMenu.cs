@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class MainMenu : MonoBehaviour
     [Header("TutorialQuests")]
     [SerializeField] private Quests defaultTutorialQuests = null;
     [SerializeField] private Quests tutorialQuests = null;
+    [Header("Events")] public UnityEvent NewGameEvent;
 
 
     private void Start()
@@ -37,11 +39,12 @@ public class MainMenu : MonoBehaviour
 
         tutorialQuests.SetQuests(defaultTutorialQuests);
         quests.SetQuests(defaultQuests);
+        NewGameEvent.Invoke();
     }
     
     public void Continue()
     {
-        string sceneName = ES3.Load<string>("CurrentLevelName");
+        string sceneName = ES3.Load<string>("CurrentLevelName", defaultValue: "SampleScene");
         sceneLoader.LoadScene(sceneName);
     }
 
