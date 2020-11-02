@@ -333,6 +333,7 @@
               <e p="LightColor.cs" t="Include" />
               <e p="MainMenu.cs" t="Include" />
               <e p="NPCSpawner.cs" t="Include" />
+              <e p="OGETransition.cs" t="Include" />
               <e p="Pelmeni.cs" t="Include" />
               <e p="SettingsMenu.cs" t="Include" />
               <e p="Sound.cs" t="Include" />
@@ -359,6 +360,7 @@
             </e>
             <e p="ScriptableObjects" t="Include">
               <e p="AudioSystem.cs" t="Include" />
+              <e p="BoolAsset.cs" t="Include" />
               <e p="EventSystem" t="Include">
                 <e p="GameEvent.cs" t="Include" />
               </e>

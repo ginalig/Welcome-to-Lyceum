@@ -32,13 +32,14 @@ public class DialogueManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        sentences = new Queue<string>();
         
         //DontDestroyOnLoad(gameObject);
     }
     
     void Start()
     {
-        sentences = new Queue<string>();
+        
     }
 
     public void StartDialogue(Dialogue dialogue)

@@ -38,7 +38,7 @@ public class PlayerUI : MonoBehaviour
         Time.timeScale = Time.timeScale > 0 ? 0 : 1;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         isPaused = !isPaused;
-        if (isPaused) Player.Instance.controls.Disable();
+        if (isPaused && Player.Instance != null) Player.Instance.controls.Disable();
         else Player.Instance.controls.Enable();
     }
 

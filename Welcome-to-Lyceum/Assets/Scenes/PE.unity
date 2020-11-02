@@ -6172,6 +6172,36 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1245123751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245123752}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1245123752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245123751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.28, y: 5.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1264960745 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1269121930741861391, guid: f9d9b18da9653b740b89604bb9aa22e9,
@@ -6966,8 +6996,8 @@ MonoBehaviour:
   dotPrefab: {fileID: 8262062760739780135, guid: 5cff3ebdc64a2ad499b870f3c46a3608,
     type: 3}
   dotsParent: {fileID: 401001857}
-  dotsNumber: 7
-  dotsSpacing: 0.1
+  dotsNumber: 6
+  dotsSpacing: 0.15
 --- !u!4 &1783160372
 Transform:
   m_ObjectHideFlags: 0
@@ -7249,5 +7279,16 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[4]
       value: "\u0414\u0435\u0440\u0436\u0438 \u043C\u044F\u0447, \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439!"
       objectReference: {fileID: 0}
+    - target: {fileID: 1269121930741861391, guid: f9d9b18da9653b740b89604bb9aa22e9,
+        type: 3}
+      propertyPath: dialogue.name
+      value: "\u041F\u0440\u0435\u043F\u043E\u0434"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269121930741861391, guid: f9d9b18da9653b740b89604bb9aa22e9,
+        type: 3}
+      propertyPath: dialogue.NPCIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: da146a2e5b2d75841b5b6351281a1ebb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9d9b18da9653b740b89604bb9aa22e9, type: 3}
