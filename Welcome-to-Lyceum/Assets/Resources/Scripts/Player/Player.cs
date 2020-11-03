@@ -79,9 +79,9 @@ namespace Resources.Scripts
         private void Update()
         {
             if (Time.timeScale < 1) return; // если пауза, ничего не делать
-
+            
             mousePosition = controls.Player.Look.ReadValue<Vector2>();
-            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);        
             
             direction = controls.Player.Move.ReadValue<Vector2>() * (isConfused * -1);
 
@@ -183,14 +183,12 @@ namespace Resources.Scripts
             isConfused = 1;
             var prevSpeed = speed;
             StartCoroutine(GetConfusedSpeed());
-            //stressedEffectImage.SetActive(true);
             quests.isAbleToLoad = false;
             stressEffectBegin.Raise();
             yield return new WaitForSecondsRealtime(10);
             StopCoroutine(GetConfusedSpeed());
             stressLevel = 0;
             stressEffectEnd.Raise();
-            //stressedEffectImage.SetActive(false);
             speed = 5;
             isConfused = -1;
         }

@@ -6,6 +6,7 @@ public class StressSpawner : MonoBehaviour
 {
     public GameObject stressPrefab;
     public Position playerPosition;
+    public BoolAsset isAbleToSpawn;
     public bool isSpawning;
     public float spawnRate;
     public float distanceFromPlayer;
@@ -13,6 +14,7 @@ public class StressSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartSpawning());
+        isAbleToSpawn.SetValue(true);
     }
     
     private IEnumerator StartSpawning()
@@ -21,8 +23,13 @@ public class StressSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnRate);
             var randomDir = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
-            var SpawnPosition = playerPosition.position + new Vector3(distanceFromPlayer * randomDir, UnityEngine.Random.Range(-0.4f, 0f)); 
-            Instantiate(stressPrefab, SpawnPosition, Quaternion.identity);
+            if (isAbleToSpawn.GetValue())
+            {
+                var SpawnPosition = playerPosition.position +
+                                    new Vector3(distanceFromPlayer * randomDir, UnityEngine.Random.Range(-0.4f, 0f));
+                Instantiate(stressPrefab, SpawnPosition, Quaternion.identity);
+                isAbleToSpawn.SetValue(false);
+            }
         }
     }
 }

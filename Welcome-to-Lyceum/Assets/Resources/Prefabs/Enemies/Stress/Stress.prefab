@@ -359,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shaking: {fileID: 6879542112122071775}
   quests: {fileID: 11400000, guid: c3c24a33efc3e8e47993bf61863916b1, type: 2}
+  isAbleToSpawn: {fileID: 11400000, guid: 7c343d69d6b764549b1d013504f75cb2, type: 2}
   audioSystem: {fileID: 11400000, guid: 871e1a35a2a5a4f47a7846716b4d548c, type: 2}
   maxHp: 60
 --- !u!114 &6879542112122071775

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Shaking shaking = null;
     [SerializeField] private Quests quests = null;
 
+    public BoolAsset isAbleToSpawn;
     public AudioSystem audioSystem;
 
     public int maxHp;
@@ -58,6 +59,8 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+        
+        isAbleToSpawn.SetValue(true);
 
         quests.restCharges--;
         gameObject.SetActive(false);

@@ -46,6 +46,7 @@ MonoBehaviour:
   stressPrefab: {fileID: 8595835533210972764, guid: 0408ff5a79a38d04095caedd239b0a46,
     type: 3}
   playerPosition: {fileID: 11400000, guid: 511b25986bfc77c4b80d65c7d3c910f0, type: 2}
+  isAbleToSpawn: {fileID: 11400000, guid: 7c343d69d6b764549b1d013504f75cb2, type: 2}
   isSpawning: 1
-  spawnRate: 12.1
+  spawnRate: 7
   distanceFromPlayer: 10
