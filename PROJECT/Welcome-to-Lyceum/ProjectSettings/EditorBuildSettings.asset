@@ -68,6 +68,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Floor1.unity
     guid: 41ad0012cf7f2084aaac763ad57473b6
+  - enabled: 1
+    path: Assets/Scenes/SecretKFC.unity
+    guid: 66824308b36d6b84ca3e55aea20aca46
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c477c3224cbd8844b9b0f8135ad0d1d5,
       type: 2}

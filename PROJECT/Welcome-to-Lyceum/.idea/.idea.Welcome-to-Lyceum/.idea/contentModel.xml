@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\nigai\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\nigai\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Welcome-to-Lyceum.-1288120000.00" t="ExcludeRecursive" />
-    <e p="D:\GinaligIVR\Welcome-to-Lyceum\Welcome-to-Lyceum" t="IncludeRecursive">
+    <e p="C:\Users\nigai\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Welcome-to-Lyceum.-1781309827.00" t="ExcludeRecursive" />
+    <e p="D:\GinaligIVR\Welcome-to-Lyceum\PROJECT\Welcome-to-Lyceum" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -334,6 +334,7 @@
               <e p="MainMenu.cs" t="Include" />
               <e p="NPCSpawner.cs" t="Include" />
               <e p="OGETransition.cs" t="Include" />
+              <e p="OnCollision.cs" t="Include" />
               <e p="Pelmeni.cs" t="Include" />
               <e p="SettingsMenu.cs" t="Include" />
               <e p="Sound.cs" t="Include" />

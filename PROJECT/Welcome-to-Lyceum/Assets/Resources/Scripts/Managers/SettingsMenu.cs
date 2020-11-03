@@ -44,7 +44,7 @@ public class SettingsMenu : MonoBehaviour
 
         masterMixer.GetFloat("volume", out var volume);
         volumeSlider.value = volume;
-        masterMixer.GetFloat("volume", out volume);
+        musicMixer.GetFloat("volume", out volume);
         musicSlider.value = volume;
     }
 
