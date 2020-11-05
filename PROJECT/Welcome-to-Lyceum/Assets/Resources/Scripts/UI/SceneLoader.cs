@@ -46,8 +46,10 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadAsync(string sceneName)
     {
-        var operation = SceneManager.LoadSceneAsync(sceneName);
         loadingScreen.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.5f);
+        var operation = SceneManager.LoadSceneAsync(sceneName);
+
         
         while (!operation.isDone)
         {

@@ -15,8 +15,7 @@ public class QuestManager : MonoBehaviour
     private List<Quest> quests;
     private List<Quest> allQuests;
     private List<Quest> tutorialQuests;
-
-
+    
     private void Start()
     {
         quests = questsRef.quests;

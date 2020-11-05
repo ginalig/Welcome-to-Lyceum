@@ -189,7 +189,7 @@ namespace Resources.Scripts
             StopCoroutine(GetConfusedSpeed());
             stressLevel = 0;
             stressEffectEnd.Raise();
-            speed = 5;
+            speed = prevSpeed;
             isConfused = -1;
         }
 
