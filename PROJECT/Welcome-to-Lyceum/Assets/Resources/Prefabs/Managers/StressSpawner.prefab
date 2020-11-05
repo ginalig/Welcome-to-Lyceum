@@ -48,5 +48,5 @@ MonoBehaviour:
   playerPosition: {fileID: 11400000, guid: 511b25986bfc77c4b80d65c7d3c910f0, type: 2}
   isAbleToSpawn: {fileID: 11400000, guid: 7c343d69d6b764549b1d013504f75cb2, type: 2}
   isSpawning: 1
-  spawnRate: 7
+  spawnRate: 10
   distanceFromPlayer: 10
